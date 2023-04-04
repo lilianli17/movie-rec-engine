@@ -1,0 +1,119 @@
+Database Creditials: 
+Endpoint: database-1.cjgfrjo1jwqk.us-east-1.rds.amazonaws.com
+Port: 3306
+Password: g2TAhKVmDG6LNE
+Username: admin
+
+SQL queries:
+Q1. For each genre, list the genre name, and the first name, last name, and released date of the film with the highest rating of that genre. Order the results by genre name.
+
+SELECT g.genre, m.original_title, c.name AS director_first_name, c.name AS director_last_name, m.release_date
+FROM Genres g
+JOIN Movies m ON g.id = m.id
+JOIN Crew c ON m.id = c.id AND c.job = 'Director'
+WHERE m.popularity = (SELECT MAX(popularity) FROM Movies WHERE id = g.id)
+ORDER BY g.genre;
+
+Q2. For each actor, list the actor's name and the number of movies they have starred in, ordered by the number of movies in descending order.
+
+SELECT c.name AS actor_name, COUNT(*) AS num_movies_starred
+FROM Cast c
+JOIN Movies m ON c.id = m.id
+GROUP BY c.name
+ORDER BY num_movies_starred DESC;
+
+Q3. List the top 10 most popular movies released between January 1, 2021, and December 31, 2021, including their original title, release date, and popularity score. Order the results by popularity score in descending order.
+
+SELECT original_title, release_date, popularity
+FROM Movies
+WHERE release_date BETWEEN '2021-01-01' AND '2021-12-31'
+ORDER BY popularity DESC
+LIMIT 10;
+
+Q4. List the collections and the number of movies in each collection, ordered by the number of movies in descending order.
+
+SELECT collection, COUNT(*) AS num_movies
+FROM Collections
+JOIN Movies m ON Collections.id = m.id
+GROUP BY collection
+ORDER BY num_movies DESC;
+
+
+Q5. Find the 10 most similar movies to a specific movie.
+Description: This query retrieves the 10 movies that are most similar to a specific movie based on genre, cast, and crew.
+
+SELECT TOP 10 m.title, m.genre, m.release_date, m.runtime, m.director, m.cast
+FROM movies m
+WHERE m.title <> 'specific_movie_title'
+AND (m.genre = (SELECT genre FROM movies WHERE title = 'specific_movie_title')
+OR m.director = (SELECT director FROM movies WHERE title = 'specific_movie_title')
+OR m.cast = (SELECT cast FROM movies WHERE title = 'specific_movie_title'))
+ORDER BY (CASE
+WHEN m.genre = (SELECT genre FROM movies WHERE title = 'specific_movie_title') THEN 1
+ELSE 0
+END)
++ (CASE
+WHEN m.director = (SELECT director FROM movies WHERE title = 'specific_movie_title') THEN 1
+ELSE 0
+END)
++ (CASE
+WHEN m.cast = (SELECT cast FROM movies WHERE title = 'specific_movie_title') THEN 1
+ELSE 0
+END) DESC;
+SELECT m2.title, COUNT(*) AS similarity_score
+FROM movies m1
+JOIN movies m2 ON m1.movie_id != m2.movie_id
+JOIN movie_genres mg1 ON m1.movie_id = mg1.movie_id
+JOIN movie_genres mg2 ON m2.movie_id = mg2.movie_id
+JOIN movie_cast mc1 ON m1.movie_id = mc1.movie_id
+JOIN movie_cast mc2 ON m2.movie_id = mc2.movie_id
+JOIN movie_crew mcc1 ON m1.movie_id = mcc1.movie_id
+JOIN movie_crew mcc2 ON m2.movie_id = mcc2.movie_id
+WHERE m1.title = '[specific movie title]'
+AND mg1.genre = mg2.genre
+AND mc1.actor_id = mc2.actor_id
+AND mcc1.crew_id = mcc2.crew_id
+GROUP BY m2.title
+ORDER BY similarity_score DESC
+LIMIT 10;
+
+Q6. Find the top 10 movies with the highest popularity.
+
+SELECT m.original_title, m.popularity
+FROM movies_cleaned m
+ORDER BY m.popularity DESC
+LIMIT 10
+
+Q7. Description: This query retrieves the top 10 movies that have received the highest average rating from users.
+
+SELECT m.original_title, m.popularity
+FROM movies_cleaned m JOIN genres g ON m.id = g.id
+WHERE g.genre = searched_genre
+ORDER BY m.popularity DESC
+LIMIT 10
+
+Q8. Find the 10 most popular movies for a specific genre.
+Description: This query retrieves the 10 most popular movies for a specific genre, based on the number of ratings they have received.
+
+SELECT m.original_title, cr.name, ca.name
+FROM movies_cleaned m JOIN credits_crew cr ON cr.id = m.id JOIN credits_cast ca ON ca.id = m.id
+WHERE m.title = searched_movie_title
+
+Q9. Find the cast and crew for a specific movie.
+Description: This query retrieves the cast and crew for a specific movie based on the information in the Credits table.
+
+SELECT m.title, m.runtime
+FROM movies_cleaned m
+ORDER BY m.runtime DESC
+LIMIT 10
+
+Q10. Find the top 10 movies with the longest runtime.
+Description: This query retrieves the top 10 movies that have the longest runtime, sorted by runtime in descending order.
+
+SELECT cr.name, COUNT(cr.job) AS num_movies
+FROM credits_crew cr
+GROUPBY cr.name
+WHERE cr,job = ‘Director’
+ORDER BY num_movies
+LIMIT 5
+
