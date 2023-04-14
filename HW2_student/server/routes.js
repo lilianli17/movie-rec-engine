@@ -19,16 +19,20 @@ connection.connect((err) => err && console.log(err));
 // Route 1: GET /author/:type
 const author = async function(req, res) {
   // TODO (TASK 1): replace the values of name and pennKey with your own
-  const name = 'John Doe';
-  const pennKey = 'jdoe';
+  const name = 'Lilian Li';
+  const pennKey = 'jieli17';
 
   // checks the value of type the request parameters
   // note that parameters are required and are specified in server.js in the endpoint by a colon (e.g. /author/:type)
   if (req.params.type === 'name') {
     // res.send returns data back to the requester via an HTTP response
     res.send(`Created by ${name}`);
-  } else if (null) {
-    // TODO (TASK 2): edit the else if condition to check if the request parameter is 'pennkey' and if so, send back response 'Created by [pennkey]'
+
+  } else if (req.params.type === 'pennkey') {
+    // TODO (TASK 2): edit the else if condition to check if the request parameter 
+    // is 'pennkey' and if so, send back response 'Created by [pennkey]'
+    res.send(`Created by ${pennKey}`);
+  
   } else {
     // we can also send back an HTTP status code to indicate an improper request
     res.status(400).send(`'${req.params.type}' is not a valid author type. Valid types are 'name' and 'pennkey'.`);
@@ -46,10 +50,7 @@ const random = async function(req, res) {
   // Only a small change (unrelated to querying) is required for TASK 3 in this route.
   connection.query(`
     SELECT *
-    FROM Songs
-    WHERE explicit <= ${explicit}
-    ORDER BY RAND()
-    LIMIT 1
+    FROM Movies
   `, (err, data) => {
     if (err || data.length === 0) {
       // if there is an error for some reason, or if the query is empty (this should not be possible)
@@ -61,9 +62,7 @@ const random = async function(req, res) {
       // being song_id and title which you will add. In this case, there is only one song
       // so we just directly access the first element of the query results array (data)
       // TODO (TASK 3): also return the song title in the response
-      res.json({
-        song_id: data[0].song_id,
-      });
+      res.json(data[0]);
     }
   });
 }
@@ -75,8 +74,12 @@ const random = async function(req, res) {
 // Route 3: GET /song/:song_id
 const song = async function(req, res) {
   // TODO (TASK 4): implement a route that given a song_id, returns all information about the song
-  // Most of the code is already written for you, you just need to fill in the query
-  connection.query(``, (err, data) => {
+  // Most of the code is already written for you, you just need to fill in the query 
+  connection.query(`
+    SELECT *
+    FROM Songs
+    WHERE song_id = '${req.params.song_id}'
+  `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
       res.json({});
@@ -88,21 +91,58 @@ const song = async function(req, res) {
 
 // Route 4: GET /album/:album_id
 const album = async function(req, res) {
-  // TODO (TASK 5): implement a route that given a album_id, returns all information about the album
-  res.json({}); // replace this with your implementation
+  // TODO (TASK 5): implement a route that given a album_id, 
+  // returns all information about the album
+  connection.query(`
+    SELECT *
+    FROM Albums
+    WHERE album_id = '${req.params.album_id}'
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json({});
+    } else {
+      res.json(data[0]);
+    }
+  });
+
 }
 
 // Route 5: GET /albums
 const albums = async function(req, res) {
   // TODO (TASK 6): implement a route that returns all albums ordered by release date (descending)
   // Note that in this case you will need to return multiple albums, so you will need to return an array of objects
-  res.json([]); // replace this with your implementation
+  connection.query(`
+    SELECT *
+    FROM Albums
+    ORDER BY release_date DESC
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+
 }
 
 // Route 6: GET /album_songs/:album_id
 const album_songs = async function(req, res) {
   // TODO (TASK 7): implement a route that given an album_id, returns all songs on that album ordered by track number (ascending)
-  res.json([]); // replace this with your implementation
+  connection.query(`
+    SELECT song_id, title, number, duration, plays
+    FROM Songs
+    WHERE album_id = '${req.params.album_id}'
+    ORDER BY number
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
 }
 
 /************************
@@ -113,16 +153,49 @@ const album_songs = async function(req, res) {
 const top_songs = async function(req, res) {
   const page = req.query.page;
   // TODO (TASK 8): use the ternary (or nullish) operator to set the pageSize based on the query or default to 10
-  const pageSize = undefined;
+  const pageSize = req.query.page_size ? req.query.page_size : 10;
 
   if (!page) {
     // TODO (TASK 9)): query the database and return all songs ordered by number of plays (descending)
     // Hint: you will need to use a JOIN to get the album title as well
-    res.json([]); // replace this with your implementation
+    connection.query(`
+      SELECT s.song_id AS song_id, s.title AS title, s.album_id AS album_id, Albums.title AS album, s.plays AS plays
+      FROM Songs AS s
+      JOIN Albums
+      ON s.album_id = Albums.album_id
+      ORDER BY s.plays DESC
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      }
+      else {
+        res.json(data);
+      }
+    });
   } else {
+    const offset = (page - 1) * pageSize;
     // TODO (TASK 10): reimplement TASK 9 with pagination
     // Hint: use LIMIT and OFFSET (see https://www.w3schools.com/php/php_mysql_select_limit.asp)
-    res.json([]); // replace this with your implementation
+    connection.query(`
+      SELECT s.song_id AS song_id, s.title AS title, s.album_id AS album_id, Albums.title AS album, s.plays AS plays
+      FROM Songs s
+      JOIN Albums
+      ON s.album_id = Albums.album_id
+      ORDER BY s.plays DESC
+      LIMIT ${pageSize}
+      OFFSET ${offset}
+      
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      }
+      else {
+        res.json(data);
+      }
+    }
+    );
   }
 }
 
@@ -130,18 +203,163 @@ const top_songs = async function(req, res) {
 const top_albums = async function(req, res) {
   // TODO (TASK 11): return the top albums ordered by aggregate number of plays of all songs on the album (descending), with optional pagination (as in route 7)
   // Hint: you will need to use a JOIN and aggregation to get the total plays of songs in an album
-  res.json([]); // replace this with your implementation
+  const page = req.query.page;
+  const pageSize = req.query.page_size ? req.query.page_size : 10;
+  
+
+  if (!page) {
+    connection.query(`
+      SELECT a.album_id AS album_id, a.title AS title, SUM(s.plays) AS plays
+      FROM Albums AS a
+      JOIN Songs AS s
+      ON a.album_id = s.album_id
+      GROUP BY album_id
+      ORDER BY plays DESC
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      }
+      else {
+        res.json(data);
+      }
+    });
+  } else {
+    const offset = (page - 1) * pageSize;
+    connection.query(`
+      SELECT a.album_id AS album_id, a.title AS title, SUM(s.plays) AS plays
+      FROM Albums AS a
+      JOIN Songs AS s
+      ON a.album_id = s.album_id
+      GROUP BY album_id
+      ORDER BY plays DESC
+      LIMIT ${pageSize} 
+      OFFSET ${offset}
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      }
+      else {
+        res.json(data);
+      }
+    });
+  }
+
 }
 
-// Route 9: GET /search_albums
+// Route 9: GET /search_songs
 const search_songs = async function(req, res) {
-  // TODO (TASK 12): return all songs that match the given search query with parameters defaulted to those specified in API spec ordered by title (ascending)
+  // TODO (TASK 12): return all songs that match the given search query with parameters defaulted 
+  // to those specified in API spec ordered by title (ascending)
   // Some default parameters have been provided for you, but you will need to fill in the rest
   const title = req.query.title ?? '';
   const durationLow = req.query.duration_low ?? 60;
   const durationHigh = req.query.duration_high ?? 660;
+  const playsLow = req.query.plays_low ?? 0;
+  const playsHigh = req.query.plays_high ?? 1100000000;
+  const danceabilityLow = req.query.danceability_low ?? 0;
+  const danceabilityHigh = req.query.danceability_high ?? 1;
+  const energyLow = req.query.energy_low ?? 0;
+  const energyHigh = req.query.energy_high ?? 1;
+  const valenceLow = req.query.valence_low ?? 0;
+  const valenceHigh = req.query.valence_high ?? 1;
+  const explicit = req.query.explicit === 'true' ? 1 : 0;
 
-  res.json([]); // replace this with your implementation
+  if (!title) {
+    //     if explicit is not defined or does not equal “true” then filter out any songs that are
+    // labeled as explicit
+    if (explicit == 0) {
+      connection.query(`
+        SELECT *
+        FROM Songs
+        WHERE duration BETWEEN ${durationLow} AND ${durationHigh}
+        AND plays BETWEEN ${playsLow} AND ${playsHigh}
+        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
+        AND energy BETWEEN ${energyLow} AND ${energyHigh}
+        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
+        AND explicit = 0
+        ORDER BY title ASC
+      `, (err, data) => {
+        if (err || data.length === 0) {
+          console.log(err);
+          res.json([]);
+        }
+        else {
+          res.json(data);
+        }
+      }
+      );
+    } else {
+      connection.query(`
+        SELECT *
+        FROM Songs
+        WHERE duration BETWEEN ${durationLow} AND ${durationHigh}
+        AND plays BETWEEN ${playsLow} AND ${playsHigh}
+        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
+        AND energy BETWEEN ${energyLow} AND ${energyHigh}
+        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
+        ORDER BY title ASC
+      `, (err, data) => {
+        if (err || data.length === 0) {
+          console.log(err);
+          res.json([]);
+        }
+        else {
+          res.json(data);
+        }
+      }
+      );
+    }
+
+  } else {
+    if (explicit == 0) {
+      connection.query(`
+        SELECT *
+        FROM Songs
+        WHERE title LIKE '%${title}%'
+        AND duration BETWEEN ${durationLow} AND ${durationHigh}
+        AND plays BETWEEN ${playsLow} AND ${playsHigh}
+        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
+        AND energy BETWEEN ${energyLow} AND ${energyHigh}
+        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
+        AND explicit = 0
+        ORDER BY title ASC
+      `, (err, data) => {
+        if (err || data.length === 0) {
+          console.log(err);
+          res.json([]);
+        }
+        else {
+          res.json(data);
+        }
+      }
+      );
+    }
+    else {
+      connection.query(`
+        SELECT *
+        FROM Songs
+        WHERE title LIKE '%${title}%'
+        AND duration BETWEEN ${durationLow} AND ${durationHigh}
+        AND plays BETWEEN ${playsLow} AND ${playsHigh}
+        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
+        AND energy BETWEEN ${energyLow} AND ${energyHigh}
+        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
+        ORDER BY title ASC
+      `, (err, data) => {
+        if (err || data.length === 0) {
+          console.log(err);
+          res.json([]);
+        }
+        else {
+          res.json(data);
+        }
+      }
+      );
+    }
+  }
+
 }
 
 module.exports = {
