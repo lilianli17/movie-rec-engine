@@ -23,7 +23,7 @@ test('GET /random', async () => {
   await supertest(app).get('/random')
     .expect(200)
     .then((res) => {
-      expect(res.body).toStrictEqual({
+      expect(res.body).toStrictEqual([{
         id: expect.any(Number),
         imdb_id: expect.any(Number),
         original_language: expect.any(String),
@@ -32,7 +32,7 @@ test('GET /random', async () => {
         popularity: expect.any(Number),
         release_date: expect.any(String),
         runtime: expect.any(Number)
-      });
+      }]);
     });
 });
 
@@ -44,13 +44,13 @@ test('GET /movie/31879', async () => {
     });
  });
 
-test('GET /album/3lS1y25WAhcqJDATJK70Mq', async () => {
-  await supertest(app).get('/album/3lS1y25WAhcqJDATJK70Mq')
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toStrictEqual(results.album)
-    });
-});
+// test('GET /album/3lS1y25WAhcqJDATJK70Mq', async () => {
+//   await supertest(app).get('/album/3lS1y25WAhcqJDATJK70Mq')
+//     .expect(200)
+//     .then((res) => {
+//       expect(res.body).toStrictEqual(results.album)
+//     });
+// });
 
 // test('GET /albums', async () => {
 //   await supertest(app).get('/albums')
@@ -59,22 +59,48 @@ test('GET /album/3lS1y25WAhcqJDATJK70Mq', async () => {
 //       expect(res.body).toStrictEqual(results.albums)
 //     });
 // });
+//?title=all&explicit=true&energy_low=0.5&valence_low=0.2&valence_high=0.8'
 
-// test('GET /album_songs/6AORtDjduMM3bupSWzbTSG', async () => {
-//   await supertest(app).get('/album_songs/6AORtDjduMM3bupSWzbTSG')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.album_songs)
-//     });
-// });
-
-test('GET /top_movies all', async () => {
-  await supertest(app).get('/top_movies')
+test('GET /search_collections', async () => {
+  await supertest(app).get('/search_collections/?collection=Three Colors Collection')
     .expect(200)
     .then((res) => {
-      expect(res.body[0]).toStrictEqual(results.top_movie)
+        console.log(res);
+        expect(res.body).toStrictEqual(results.search_collections);
     });
 });
+
+test('GET /get_similar/238', async () => {
+  await supertest(app).get('/get_similar/238')
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toStrictEqual(results.top_movies)
+    });
+});
+
+test('GET /get_similar_genres/100', async () => {
+    await supertest(app).get('/get_similar_genres/100')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.top_movies_genres)
+      });
+  });
+
+  test('GET /get_similar_crew/100', async () => {
+    await supertest(app).get('/get_similar_crew/30')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.similar_crew)
+      });
+  });
+
+  test('GET /get_similar_cast/100', async () => {
+    await supertest(app).get('/get_similar_cast/250')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.similar_cast)
+      });
+  });
 
 // // test('GET /top_songs page 3', async () => {
 // //   await supertest(app).get('/top_songs?page=3')
@@ -117,30 +143,27 @@ test('GET /top_movies all', async () => {
 //     });
 // });
 
-// test('GET /search_songs default', async () => {
-//   await supertest(app).get('/search_songs')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body.length).toEqual(219)
-//       expect(res.body[0]).toStrictEqual({
-//         song_id: expect.any(String),
-//         album_id: expect.any(String),
-//         title: expect.any(String),
-//         number: expect.any(Number),
-//         duration: expect.any(Number),
-//         plays: expect.any(Number),
-//         danceability: expect.any(Number),
-//         energy: expect.any(Number),
-//         valence: expect.any(Number),
-//         tempo: expect.any(Number),
-//         key_mode: expect.any(String),
-//         explicit: expect.any(Number),
-//       });
-//     });
-// });
+test('GET /search_movies default', async () => {
+   await supertest(app).get('/search_movies')
+     //.expect(200)
+     .then((res) => {
+       expect(res.body.length).toEqual(89142)
+       expect(res.body[0]).toStrictEqual({
+         id: expect.any(Number),
+         imdb_id: expect.any(Number),
+         original_title: expect.any(String),
+         original_language: expect.any(String),
+         overview: expect.any(String),
+         popularity: expect.any(Number),
+         release_date: expect.any(String),
+         runtime: expect.any(Number),
+         genre: expect.any(String)
+       });
+     });
+});
 
 // test('GET /search_songs filtered', async () => {
-//   await supertest(app).get('/search_songs?title=all&explicit=true&energy_low=0.5&valence_low=0.2&valence_high=0.8')
+//   await supertest(app).get('/search_songs?popularity_Low=15&genre='Crime'&valence_high=0.8')
 //     .expect(200)
 //     .then((res) => {
 //       expect(res.body).toStrictEqual(results.search_songs_filtered)

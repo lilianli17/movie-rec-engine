@@ -9,19 +9,193 @@
     "release_date": "1936-05-22 00:00:00",
     "runtime":76
   },
-  "top_movie":
-      {
-        "id": 211672,
-        "imdb_id": 2293640,
-        "original_title": "Minions",
-        "original_language": "en",
-        "overview": "Minions Stuart, Kevin and Bob are recruited by Sca",
-        "popularity": 547.488,
-        "release_date": "2015-06-17T04:00:00.000Z",
-        "runtime": 91
-      },
     "search_collections":
-    {
-      "collection": "Toy Story"
-    }
+        [
+            {
+              "collection": "Three Colors Collection",
+              "movies": "Trois couleurs : Blanc,Trois couleurs : Bleu,Trois couleurs : Rouge",
+              "genres": "Comedy,Drama,Music,Mystery,Romance",
+              "keywords": "business man,composer,dog,english channel,funeral,geneva,hairdresser,isolation,judge,loss of husband,mannequin,pain,paris,poland,sexual frustration,shadowing,to compose,travel"
+            }
+          ],
+    "search_movies_filtered":{
+        "id": 2275,
+        "imdb_id": 144214,
+        "original_title": "The General's Daughter",
+        "original_language": "en",
+        "overview": "When the body of Army Capt. Elizabeth Campbell is ",
+        "popularity": 14.0397,
+        "release_date": "1999-06-18T00:00:00.000Z",
+        "runtime": 116,
+        "genre": "Crime"
+    },
+    "top_movies":
+        [
+            {
+              "original_title": "The Godfather: Part II",
+              "similarity_score": 966
+            },
+            {
+              "original_title": "The Godfather: Part III",
+              "similarity_score": 216
+            },
+            {
+              "original_title": "The Conversation",
+              "similarity_score": 32
+            },
+            {
+              "original_title": "Apocalypse Now",
+              "similarity_score": 26
+            },
+            {
+              "original_title": "Rumble Fish",
+              "similarity_score": 12
+            },
+            {
+              "original_title": "Dog Day Afternoon",
+              "similarity_score": 12
+            },
+            {
+              "original_title": "The Cotton Club",
+              "similarity_score": 10
+            },
+            {
+              "original_title": "The Outsiders",
+              "similarity_score": 10
+            },
+            {
+              "original_title": "The Rain People",
+              "similarity_score": 8
+            },
+            {
+              "original_title": "One from the Heart",
+              "similarity_score": 7
+            }
+          ],
+          "top_movies_genres":[
+            {
+              "original_title": "The Chase",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "Chicago",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "A Midsummer Night's Dream",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "The Ladykillers",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "The Pink Panther",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "We're No Angels",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "Ca$h",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "Emma",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "The Hound of the Baskervilles",
+              "similarity_score": 4
+            },
+            {
+              "original_title": "Taxi",
+              "similarity_score": 4
+            }
+          ],
+          "similar_crew":[
+            {
+              "original_title": "MEMORIES",
+              "similarity_score": 5
+            },
+            {
+              "original_title": "アキラ",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "Robotto kânibaru",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "東京ゴッドファーザーズ",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "蟲師",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Beyond",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "千年女優",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "パプリカ",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "The Animatrix",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Steamboy",
+              "similarity_score": 2
+            }
+          ],
+          "similar_cast":[
+            {
+              "original_title": "Gamle mænd i nye biler",
+              "similarity_score": 5
+            },
+            {
+              "original_title": "Den Skaldede Frisør",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "De grønne slagtere",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "Hævnen",
+              "similarity_score": 3
+            },
+            {
+              "original_title": "Festen",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Et rigtigt menneske",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Italiensk for begyndere",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Adams æbler",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Blinkende lygter",
+              "similarity_score": 2
+            },
+            {
+              "original_title": "Pusher",
+              "similarity_score": 2
+            }
+          ]
 }

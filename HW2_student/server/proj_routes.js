@@ -95,40 +95,22 @@ const search_cast = async function(req, res) {
 // Route 6: GET /search_movies WIP
 const search_movies = async function(req, res) {
   // search based on title (string), genre (drop down), popularity, release_year
-  const title = req.query.title ?? '';
-
-  const g_Crime = req.query.Crime === 'true' ? 'Crime' : '';
-  const g_Drama = req.query.Drama === 'true' ? 'Drama' : '';
-  const g_Comedy = req.query.Comedy === 'true' ? 'Comedy' : '';
-  const g_Action = req.query.Action === 'true' ? 'Action' : '';
-  const g_Thriller = req.query.Thriller === 'true' ? 'Thriller' : '';
-  const g_Adventure = req.query.Adventure === 'true' ? 'Adventure' : '';
-  const g_ScienceFiction = req.query.ScienceFiction === 'true' ? 1 : 0;
-  const g_Animation = req.query.Animation === 'true' ? 1 : 0;
-  const g_Family = req.query.Family === 'true' ? 1 : 0;
-  const g_Romance = req.query.Romance === 'true' ? 1 : 0;
-  const g_Mystery = req.query.Mystery === 'true' ? 1 : 0;
-  const g_Music = req.query.Music === 'true' ? 1 : 0;
-  const g_Horror = req.query.Horror === 'true' ? 1 : 0;
-  const g_Fantasy = req.query.Fantasy === 'true' ? 1 : 0;
-  const g_Documentary = req.query.Documentary === 'true' ? 1 : 0;
-  const g_War = req.query.War === 'true' ? 1 : 0;
-  const g_Western = req.query.Western === 'true' ? 1 : 0;
-  const g_History = req.query.History === 'true' ? 1 : 0;
-  const g_Foreign = req.query.Foreign === 'true' ? 1 : 0;
-
-  const popularity = req.query.popularity ?? 0.5;
-  const release_date_From = req.query.release_date ?? STR_TO_DATE('2000-01-01 00:00:00', '%Y-%m-%d %H:%i:%s');
+  const title = req.query.title ?? 0;
+  const genre = req.query.genre ?? ('Crime','Drama','Comedy','Action','Thriller','Adventure','Science Fiction',
+    'Animation','Family','Romance','Mystery','Music','Horror','Fantasy','Documentary','War','Western','History','Foreign');
+  const popularity_Low = req.query.popularity ?? 0;
+  const release_date_From = req.query.release_date ?? STR_TO_DATE('1950-01-01 00:00:00', '%Y-%m-%d %H:%i:%s');
   const release_date_To = req.query.release_date ?? STR_TO_DATE('2023-01-01 00:00:00', '%Y-%m-%d %H:%i:%s');
-
+  const runtime_Low = req.query.runtime_Low ?? 0;
+  const runtime_High = req.query.runtime_High ?? 500;
 
   if (!title) {
       connection.query(`
         SELECT *
         FROM (SELECT * FROM Movies WHERE
-          popularity >= ${popularity} AND release_date BETWEEN ${release_date_From} AND ${release_date_To}) M
-        JOIN (SELECT id, genre FROM Genres WHERE
-          ) G ON M.id=G.id
+          popularity >= ${popularity} AND release_date BETWEEN ${release_date_From} AND ${release_date_To}
+          AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}) M
+        JOIN (SELECT id, genre FROM Genres WHERE genre IN ${genre}) G ON M.id=G.id
         ORDER BY title ASC
       `, (err, data) => {
         if (err || data.length === 0) {
@@ -143,12 +125,10 @@ const search_movies = async function(req, res) {
   else {
       connection.query(`
         SELECT *
-        FROM Songs
-        WHERE duration BETWEEN ${durationLow} AND ${durationHigh}
-        AND plays BETWEEN ${playsLow} AND ${playsHigh}
-        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
-        AND energy BETWEEN ${energyLow} AND ${energyHigh}
-        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
+        FROM (SELECT * FROM Movies WHERE
+          popularity >= ${popularity} AND release_date BETWEEN ${release_date_From} AND ${release_date_To} 
+          AND original_title LIKE '%${title}%' AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}) M
+        JOIN (SELECT id, genre FROM Genres WHERE genre IN ${genre}) G ON M.id=G.id
         ORDER BY title ASC
       `, (err, data) => {
         if (err || data.length === 0) {
@@ -160,54 +140,5 @@ const search_movies = async function(req, res) {
         }
       }
       );
-    }
-
-  } else {
-    if (explicit == 0) {
-      connection.query(`
-        SELECT *
-        FROM Songs
-        WHERE title LIKE '%${title}%'
-        AND duration BETWEEN ${durationLow} AND ${durationHigh}
-        AND plays BETWEEN ${playsLow} AND ${playsHigh}
-        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
-        AND energy BETWEEN ${energyLow} AND ${energyHigh}
-        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
-        AND explicit = 0
-        ORDER BY title ASC
-      `, (err, data) => {
-        if (err || data.length === 0) {
-          console.log(err);
-          res.json([]);
-        }
-        else {
-          res.json(data);
-        }
-      }
-      );
-    }
-    else {
-      connection.query(`
-        SELECT *
-        FROM Songs
-        WHERE title LIKE '%${title}%'
-        AND duration BETWEEN ${durationLow} AND ${durationHigh}
-        AND plays BETWEEN ${playsLow} AND ${playsHigh}
-        AND danceability BETWEEN ${danceabilityLow} AND ${danceabilityHigh}
-        AND energy BETWEEN ${energyLow} AND ${energyHigh}
-        AND valence BETWEEN ${valenceLow} AND ${valenceHigh}
-        ORDER BY title ASC
-      `, (err, data) => {
-        if (err || data.length === 0) {
-          console.log(err);
-          res.json([]);
-        }
-        else {
-          res.json(data);
-        }
-      }
-      );
-    }
   }
-
-}
+} 
