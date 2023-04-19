@@ -92,6 +92,55 @@ const movie = async function(req, res) {
   });
 }
 
+const top_popular = async function(req, res) {
+    connection.query(`
+      SELECT *
+      FROM Movies
+      ORDER BY popularity DESC
+      LIMIT 10
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(data);
+      }
+    });
+  }
+
+  const top_popular_genre = async function(req, res) {
+    connection.query(`
+      SELECT *
+      FROM Movies M INNER JOIN Genres G ON M.id = G.id
+      WHERE G.genre = '${req.params.genre}'
+      ORDER BY popularity DESC
+      LIMIT 10
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(data);
+      }
+    });
+  }
+
+const get_movies_collection = async function(req, res) {
+    //console.log(req.params)
+    connection.query(`
+      SELECT M.original_title, C.collection
+      FROM Collections C LEFT JOIN Movies M ON C.id = M.id
+      WHERE C.collection = '${req.params.collection}'
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(data);
+      }
+    });
+  }
+
 // Route 4: List the collections and the number of movies in each collection, 
 // ordered by the number of movies in descending order.
 // const album = async function(req, res) {
@@ -480,5 +529,8 @@ module.exports = {
   search_movies,
   get_similar_genres,
   get_similar_crew,
-  get_similar_cast
+  get_similar_cast,
+  get_movies_collection,
+  top_popular,
+  top_popular_genre
 }

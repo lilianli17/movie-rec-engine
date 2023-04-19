@@ -197,5 +197,229 @@
               "original_title": "Pusher",
               "similarity_score": 2
             }
+          ],
+          "get_movie_collection": [
+            {
+              "original_title": "Kill Bill: Vol. 1",
+              "collection": "Kill Bill Collection"
+            },
+            {
+              "original_title": "Kill Bill: Vol. 2",
+              "collection": "Kill Bill Collection"
+            }
+          ],
+          "top_popular": [
+            {
+              "id": 211672,
+              "imdb_id": 2293640,
+              "original_title": "Minions",
+              "original_language": "en",
+              "overview": "Minions Stuart, Kevin and Bob are recruited by Sca",
+              "popularity": 547.488,
+              "release_date": "2015-06-17T04:00:00.000Z",
+              "runtime": 91
+            },
+            {
+              "id": 297762,
+              "imdb_id": 451279,
+              "original_title": "Wonder Woman",
+              "original_language": "en",
+              "overview": "An Amazon princess comes to the world of Man to be",
+              "popularity": 294.337,
+              "release_date": "2017-05-30T04:00:00.000Z",
+              "runtime": 141
+            },
+            {
+              "id": 321612,
+              "imdb_id": 2771200,
+              "original_title": "Beauty and the Beast",
+              "original_language": "en",
+              "overview": "A live-action adaptation of Disney's version of th",
+              "popularity": 287.254,
+              "release_date": "2017-03-16T04:00:00.000Z",
+              "runtime": 129
+            },
+            {
+              "id": 339403,
+              "imdb_id": 3890160,
+              "original_title": "Baby Driver",
+              "original_language": "en",
+              "overview": "After being coerced into working for a crime boss,",
+              "popularity": 228.033,
+              "release_date": "2017-06-28T04:00:00.000Z",
+              "runtime": 113
+            },
+            {
+              "id": 177572,
+              "imdb_id": 2245084,
+              "original_title": "Big Hero 6",
+              "original_language": "en",
+              "overview": "The special bond that develops between plus-sized ",
+              "popularity": 213.85,
+              "release_date": "2014-10-24T04:00:00.000Z",
+              "runtime": 102
+            },
+            {
+              "id": 293660,
+              "imdb_id": 1431045,
+              "original_title": "Deadpool",
+              "original_language": "en",
+              "overview": "Deadpool tells the origin story of former Special ",
+              "popularity": 187.86,
+              "release_date": "2016-02-09T05:00:00.000Z",
+              "runtime": 108
+            },
+            {
+              "id": 283995,
+              "imdb_id": 3896198,
+              "original_title": "Guardians of the Galaxy Vol. 2",
+              "original_language": "en",
+              "overview": "The Guardians must fight to keep their newfound fa",
+              "popularity": 185.331,
+              "release_date": "2017-04-19T04:00:00.000Z",
+              "runtime": 137
+            },
+            {
+              "id": 19995,
+              "imdb_id": 499549,
+              "original_title": "Avatar",
+              "original_language": "en",
+              "overview": "In the 22nd century, a paraplegic Marine is dispat",
+              "popularity": 185.071,
+              "release_date": "2009-12-10T05:00:00.000Z",
+              "runtime": 162
+            },
+            {
+              "id": 245891,
+              "imdb_id": 2911666,
+              "original_title": "John Wick",
+              "original_language": "en",
+              "overview": "Ex-lunatic John Wick comes off his meds to track d",
+              "popularity": 183.87,
+              "release_date": "2014-10-22T04:00:00.000Z",
+              "runtime": 101
+            },
+            {
+              "id": 210577,
+              "imdb_id": 2267998,
+              "original_title": "Gone Girl",
+              "original_language": "en",
+              "overview": "With his wife's disappearance having become the fo",
+              "popularity": 154.801,
+              "release_date": "2014-10-01T04:00:00.000Z",
+              "runtime": 145
+            }
+          ],
+          "top_popular_genre": [
+            {
+              "id": 297762,
+              "imdb_id": 451279,
+              "original_title": "Wonder Woman",
+              "original_language": "en",
+              "overview": "An Amazon princess comes to the world of Man to be",
+              "popularity": 294.337,
+              "release_date": "2017-05-30T04:00:00.000Z",
+              "runtime": 141,
+              "genre": "Action"
+            },
+            {
+              "id": 339403,
+              "imdb_id": 3890160,
+              "original_title": "Baby Driver",
+              "original_language": "en",
+              "overview": "After being coerced into working for a crime boss,",
+              "popularity": 228.033,
+              "release_date": "2017-06-28T04:00:00.000Z",
+              "runtime": 113,
+              "genre": "Action"
+            },
+            {
+              "id": 177572,
+              "imdb_id": 2245084,
+              "original_title": "Big Hero 6",
+              "original_language": "en",
+              "overview": "The special bond that develops between plus-sized ",
+              "popularity": 213.85,
+              "release_date": "2014-10-24T04:00:00.000Z",
+              "runtime": 102,
+              "genre": "Action"
+            },
+            {
+              "id": 293660,
+              "imdb_id": 1431045,
+              "original_title": "Deadpool",
+              "original_language": "en",
+              "overview": "Deadpool tells the origin story of former Special ",
+              "popularity": 187.86,
+              "release_date": "2016-02-09T05:00:00.000Z",
+              "runtime": 108,
+              "genre": "Action"
+            },
+            {
+              "id": 283995,
+              "imdb_id": 3896198,
+              "original_title": "Guardians of the Galaxy Vol. 2",
+              "original_language": "en",
+              "overview": "The Guardians must fight to keep their newfound fa",
+              "popularity": 185.331,
+              "release_date": "2017-04-19T04:00:00.000Z",
+              "runtime": 137,
+              "genre": "Action"
+            },
+            {
+              "id": 19995,
+              "imdb_id": 499549,
+              "original_title": "Avatar",
+              "original_language": "en",
+              "overview": "In the 22nd century, a paraplegic Marine is dispat",
+              "popularity": 185.071,
+              "release_date": "2009-12-10T05:00:00.000Z",
+              "runtime": 162,
+              "genre": "Action"
+            },
+            {
+              "id": 245891,
+              "imdb_id": 2911666,
+              "original_title": "John Wick",
+              "original_language": "en",
+              "overview": "Ex-lunatic John Wick comes off his meds to track d",
+              "popularity": 183.87,
+              "release_date": "2014-10-22T04:00:00.000Z",
+              "runtime": 101,
+              "genre": "Action"
+            },
+            {
+              "id": 271110,
+              "imdb_id": 3498820,
+              "original_title": "Captain America: Civil War",
+              "original_language": "en",
+              "overview": "Following the events of Age of Ultron, the collect",
+              "popularity": 145.882,
+              "release_date": "2016-04-27T04:00:00.000Z",
+              "runtime": 147,
+              "genre": "Action"
+            },
+            {
+              "id": 166426,
+              "imdb_id": 1790809,
+              "original_title": "Pirates of the Caribbean: Dead Men Tell No Tales",
+              "original_language": "en",
+              "overview": "Thrust into an all-new paycheck, a down-on-his-luc",
+              "popularity": 133.828,
+              "release_date": "2017-05-23T04:00:00.000Z",
+              "runtime": 129,
+              "genre": "Action"
+            },
+            {
+              "id": 155,
+              "imdb_id": 468569,
+              "original_title": "The Dark Knight",
+              "original_language": "en",
+              "overview": "Batman raises the stakes in his war on crime. With",
+              "popularity": 123.167,
+              "release_date": "2008-07-16T04:00:00.000Z",
+              "runtime": 152,
+              "genre": "Action"
+            }
           ]
 }

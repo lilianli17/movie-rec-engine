@@ -102,6 +102,30 @@ test('GET /get_similar_genres/100', async () => {
       });
   });
 
+  test('GET /get_movies_collection/Kill Bill Collection', async () => {
+    await supertest(app).get('/get_movies_collection/Kill Bill Collection')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.get_movie_collection)
+      });
+  });
+
+  test('GET /top_popular', async () => {
+    await supertest(app).get('/top_popular')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.top_popular)
+      });
+  });
+
+  test('GET /top_popular_genre/Action', async () => {
+    await supertest(app).get('/top_popular_genre/Action')
+      .expect(200)
+      .then((res) => {
+        expect(res.body).toStrictEqual(results.top_popular_genre)
+      });
+  });
+
 // // test('GET /top_songs page 3', async () => {
 // //   await supertest(app).get('/top_songs?page=3')
 // //     .expect(200)
