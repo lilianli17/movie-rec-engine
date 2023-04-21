@@ -7,6 +7,24 @@ import SongCard from '../components/SongCard';
 const config = require('../config.json');
 
 export default function HomePage() {
+    //home
+        //movie of the day
+        //regular search by title + advanced search
+            //search collections
+    //popular movies
+    // movies page
+        //cast and crew
+        //genres
+        //keywords
+        //etc.
+    //collection page
+        //movie list
+        //genres list
+        //cast list
+        //etc.
+    //recommendations page input movie and gives recs
+        //choose comparison fields
+    //genre page    
   // We use the setState hook to persist information across renders (such as the result of our API calls)
   const [songOfTheDay, setSongOfTheDay] = useState({});
   // TODO (TASK 13): add a state variable to store the app author (default to '')
