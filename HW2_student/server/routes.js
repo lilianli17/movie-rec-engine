@@ -352,122 +352,24 @@ const search_collections = async function(req, res) {
  * ADVANCED INFO ROUTES *
  ************************/
 
-// Route 7: GET /top_songs
-// const top_songs = async function(req, res) {
-//   const page = req.query.page;
-//   // TODO (TASK 8): use the ternary (or nullish) operator to set the pageSize based on the query or default to 10
-//   const pageSize = req.query.page_size ? req.query.page_size : 10;
-
-//   if (!page) {
-//     // TODO (TASK 9)): query the database and return all songs ordered by number of plays (descending)
-//     // Hint: you will need to use a JOIN to get the album title as well
-//     connection.query(`
-//       SELECT s.song_id AS song_id, s.title AS title, s.album_id AS album_id, Albums.title AS album, s.plays AS plays
-//       FROM Songs AS s
-//       JOIN Albums
-//       ON s.album_id = Albums.album_id
-//       ORDER BY s.plays DESC
-//     `, (err, data) => {
-//       if (err || data.length === 0) {
-//         console.log(err);
-//         res.json([]);
-//       }
-//       else {
-//         res.json(data);
-//       }
-//     });
-//   } else {
-//     const offset = (page - 1) * pageSize;
-//     // TODO (TASK 10): reimplement TASK 9 with pagination
-//     // Hint: use LIMIT and OFFSET (see https://www.w3schools.com/php/php_mysql_select_limit.asp)
-//     connection.query(`
-//       SELECT s.song_id AS song_id, s.title AS title, s.album_id AS album_id, Albums.title AS album, s.plays AS plays
-//       FROM Songs s
-//       JOIN Albums
-//       ON s.album_id = Albums.album_id
-//       ORDER BY s.plays DESC
-//       LIMIT ${pageSize}
-//       OFFSET ${offset}
-      
-//     `, (err, data) => {
-//       if (err || data.length === 0) {
-//         console.log(err);
-//         res.json([]);
-//       }
-//       else {
-//         res.json(data);
-//       }
-//     }
-//     );
-//   }
-// }
-
-// // Route 8: GET /top_albums
-// const top_albums = async function(req, res) {
-//   // TODO (TASK 11): return the top albums ordered by aggregate number of plays of all songs on the album (descending), with optional pagination (as in route 7)
-//   // Hint: you will need to use a JOIN and aggregation to get the total plays of songs in an album
-//   const page = req.query.page;
-//   const pageSize = req.query.page_size ? req.query.page_size : 10;
-  
-
-//   if (!page) {
-//     connection.query(`
-//       SELECT a.album_id AS album_id, a.title AS title, SUM(s.plays) AS plays
-//       FROM Albums AS a
-//       JOIN Songs AS s
-//       ON a.album_id = s.album_id
-//       GROUP BY album_id
-//       ORDER BY plays DESC
-//     `, (err, data) => {
-//       if (err || data.length === 0) {
-//         console.log(err);
-//         res.json([]);
-//       }
-//       else {
-//         res.json(data);
-//       }
-//     });
-//   } else {
-//     const offset = (page - 1) * pageSize;
-//     connection.query(`
-//       SELECT a.album_id AS album_id, a.title AS title, SUM(s.plays) AS plays
-//       FROM Albums AS a
-//       JOIN Songs AS s
-//       ON a.album_id = s.album_id
-//       GROUP BY album_id
-//       ORDER BY plays DESC
-//       LIMIT ${pageSize} 
-//       OFFSET ${offset}
-//     `, (err, data) => {
-//       if (err || data.length === 0) {
-//         console.log(err);
-//         res.json([]);
-//       }
-//       else {
-//         res.json(data);
-//       }
-//     });
-//   }
-
-// }
-
 // Route 6: GET /search_movies
 const search_movies = async function(req, res) {
   // search based on title (string), genre (drop down), popularity, release_year
-  const title = req.query.title ??'';
-  const genre = req.query.genre ?? ('Crime','Drama','Comedy','Action','Thriller','Adventure','Science Fiction',
-    'Animation','Family','Romance','Mystery','Music','Horror','Fantasy','Documentary','War','Western','History','Foreign');
+  const original_title = req.query.original_title ??'';
+  const genre = req.query.genre ?? ['Crime','Drama','Comedy','Action','Thriller','Adventure','Science Fiction',
+    'Animation','Family','Romance','Mystery','Music','Horror','Fantasy','Documentary','War','Western','History','Foreign'];
   const popularity_Low = req.query.popularity ?? 0;
-  const release_date_From = req.query.release_date ?? '1950-01-01 00:00:00';
-  const release_date_To = req.query.release_date ?? '2023-01-01 00:00:00';
-  const runtime_Low = req.query.runtime_Low ?? 0;
-  const runtime_High = req.query.runtime_High ?? 500;
+  const release_date_From = req.query.release_date_From ?? '1800-01-01 00:00:00';
+  const release_date_To = req.query.release_date_To ?? '2023-01-01 00:00:00';
+  const runtime_Low = req.query.runtime_Low ?? -1;
+  const runtime_High = req.query.runtime_High ?? 1257;
 
   connection.query(`
          SELECT M.id,imdb_id,original_title,original_language,overview,popularity,release_date,runtime,G.genre
          FROM (SELECT * FROM Movies WHERE
-           popularity >= ${popularity_Low}
-           AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}) M
+           popularity >= ${popularity_Low} AND original_title LIKE '${original_title}'
+           AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}
+           AND release_date BETWEEN '${release_date_From}' AND '${release_date_To}') M
          JOIN (SELECT id, genre FROM Genres WHERE genre IN ${genre}) G ON M.id=G.id
          ORDER BY original_title ASC
        `, (err, data) => {
