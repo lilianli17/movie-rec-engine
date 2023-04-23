@@ -79,9 +79,13 @@ const random = async function(req, res) {
 // Route 3: GET /movie/:id
 const movie = async function(req, res) {
   connection.query(`
-    SELECT *
+  SELECT M.*, G.genre FROM
+    (SELECT *
     FROM Movies
-    WHERE id = '${req.params.id}'
+    WHERE id = ${req.params.id}) M
+  LEFT JOIN 
+    (SELECT * FROM Genres WHERE id = ${req.params.id}) G
+  ON M.id = G.id
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -334,7 +338,7 @@ const search_movies = async function(req, res) {
   // search based on title (string), genre (drop down), popularity, release_year
   const original_title = req.query.original_title ??'';
   const genre = req.query.genre ?? ['Crime','Drama','Comedy','Action','Thriller','Adventure','Science Fiction',
-    'Animation','Family','Romance','Mystery','Music','Horror','Fantasy','Documentary','War','Western','History','Foreign'];
+    'Animation','Family','Romance','Mystery','Music','Horror','Fantasy','Documentary','War','Western','History','Foreign',''];
   const popularity_Low = req.query.popularity ?? 0;
   const release_date_From = req.query.release_date_From ?? '1800-01-01 00:00:00';
   const release_date_To = req.query.release_date_To ?? '2023-01-01 00:00:00';
@@ -342,7 +346,7 @@ const search_movies = async function(req, res) {
   const runtime_High = req.query.runtime_High ?? 1257;
 
   connection.query(`
-         SELECT M.id,imdb_id,original_title,original_language,overview,popularity,release_date,runtime,G.genre
+         SELECT M.*,G.genre
          FROM (SELECT * FROM Movies WHERE
            popularity >= ${popularity_Low} AND original_title LIKE '${original_title}'
            AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}

@@ -36,8 +36,8 @@ test('GET /random', async () => {
     });
 });
 
-test('GET /movie/31879', async () => {
-  await supertest(app).get('/movie/31879')
+test('GET /movie/14', async () => {
+  await supertest(app).get('/movie/14')
     .expect(200)
     .then((res) => {
       expect(res.body).toStrictEqual(results.movie)

@@ -12,30 +12,35 @@ export default function SongsPage() {
   const [selectedSongId, setSelectedSongId] = useState(null);
 
   const [title, setTitle] = useState('');
-  const [duration, setDuration] = useState([60, 660]);
-  const [plays, setPlays] = useState([0, 1100000000]);
-  const [danceability, setDanceability] = useState([0, 1]);
-  const [energy, setEnergy] = useState([0, 1]);
-  const [valence, setValence] = useState([0, 1]);
-  const [explicit, setExplicit] = useState(false);
+  const [runtime, setRuntime] = useState([0, 1256]);
+  const [popularity, setPopularity] = useState([0]);
+  const [genre, setGenre] = useState(['']);
+  const [release_date, setRelease_Date] = useState(['1800-01-01 00:00:00','2023-01-01 00:00:00']);
+  //const [explicit, setExplicit] = useState(false);
 
   useEffect(() => {
-    fetch(`http://${config.server_host}:${config.server_port}/search_songs`)
+    fetch(`http://${config.server_host}:${config.server_port}/search_movies`)
       .then(res => res.json())
       .then(resJson => {
-        const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
-        setData(songsWithId);
+        const movieWithId = resJson.map((movie) => ({ id: movie.id, ...movie }));
+        setData(movieWithId);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch(`http://${config.server_host}:${config.server_port}/search_movies`)
+  //     .then(res => res.json())
+  //     .then(resJson => {
+  //       const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
+  //       setData(songsWithId);
+  //     });
+  // }, []);
 
   const search = () => {
-    fetch(`http://${config.server_host}:${config.server_port}/search_songs?title=${title}` +
-      `&duration_low=${duration[0]}&duration_high=${duration[1]}` +
-      `&plays_low=${plays[0]}&plays_high=${plays[1]}` +
-      `&danceability_low=${danceability[0]}&danceability_high=${danceability[1]}` +
-      `&energy_low=${energy[0]}&energy_high=${energy[1]}` +
-      `&valence_low=${valence[0]}&valence_high=${valence[1]}` +
-      `&explicit=${explicit}`
+    fetch(`http://${config.server_host}:${config.server_port}/search_movies?original_title=${title}` +
+      `&popularity_Low=${popularity[0]}}` +
+      `&runtime_low=${runtime[0]}&runtime_high=${runtime[1]}` +
+      `&release_date_From=${release_date[0]}&release_date_To=${release_date[1]}` +
+      `&genre=${genre[0]}`
     )
       .then(res => res.json())
       .then(resJson => {

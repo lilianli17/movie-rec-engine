@@ -1,13 +1,14 @@
 {
   "movie": {
-    "id": 31879,
-    "imdb_id": 28138,
+    "id": 14,
+    "imdb_id": 169547,
     "original_language":"en",
-    "original_title":"The Princess Comes Across",
-    "overview":"A Swedish princess boards an ocean liner in Europe",
-    "popularity":0.168696,
-    "release_date": "1936-05-22 00:00:00",
-    "runtime":76
+    "original_title":"American Beauty",
+    "overview":"Lester Burnham, a depressed suburban father in a m",
+    "popularity":20.7266,
+    "release_date": "1999-09-15 00:00:00",
+    "runtime":122,
+    "genre": "Drama"
   },
     "search_collections":
         [
