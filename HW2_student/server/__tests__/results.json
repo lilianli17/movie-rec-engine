@@ -1,15 +1,546 @@
 {
-  "movie": {
-    "id": 14,
-    "imdb_id": 169547,
-    "original_language":"en",
-    "original_title":"American Beauty",
-    "overview":"Lester Burnham, a depressed suburban father in a m",
-    "popularity":20.7266,
-    "release_date": "1999-09-15 00:00:00",
-    "runtime":122,
-    "genre": "Drama"
-  },
+  "crew": [
+    {
+      "name": "George Lucas",
+      "job": "Director",
+      "department": "Directing"
+    },
+    {
+      "name": "George Lucas",
+      "job": "Executive Producer",
+      "department": "Production"
+    },
+    {
+      "name": "George Lucas",
+      "job": "Writer",
+      "department": "Writing"
+    },
+    {
+      "name": "Gary Kurtz",
+      "job": "Producer",
+      "department": "Production"
+    },
+    {
+      "name": "Rick McCallum",
+      "job": "Producer",
+      "department": "Production"
+    },
+    {
+      "name": "John Williams",
+      "job": "Original Music Composer",
+      "department": "Sound"
+    },
+    {
+      "name": "Gilbert Taylor",
+      "job": "Director of Photography",
+      "department": "Camera"
+    },
+    {
+      "name": "Vic Ramos",
+      "job": "Casting",
+      "department": "Production"
+    },
+    {
+      "name": "Irene Lamb",
+      "job": "Casting",
+      "department": "Production"
+    },
+    {
+      "name": "Norman Reynolds",
+      "job": "Art Direction",
+      "department": "Art"
+    },
+    {
+      "name": "Marcia Lucas",
+      "job": "Editor",
+      "department": "Editing"
+    },
+    {
+      "name": "Dianne Crittenden",
+      "job": "Casting",
+      "department": "Production"
+    },
+    {
+      "name": "Roger Christian",
+      "job": "Set Decoration",
+      "department": "Art"
+    },
+    {
+      "name": "Leslie Dilley",
+      "job": "Art Direction",
+      "department": "Art"
+    },
+    {
+      "name": "John Mollo",
+      "job": "Costume Design",
+      "department": "Costume & Make-Up"
+    },
+    {
+      "name": "Phil Tippett",
+      "job": "Animation",
+      "department": "Visual Effects"
+    },
+    {
+      "name": "Richard Chew",
+      "job": "Editor",
+      "department": "Editing"
+    },
+    {
+      "name": "Paul Hirsch",
+      "job": "Editor",
+      "department": "Editing"
+    },
+    {
+      "name": "John Barry",
+      "job": "Production Design",
+      "department": "Art"
+    },
+    {
+      "name": "Paul Huston",
+      "job": "Visual Effects",
+      "department": "Visual Effects"
+    }
+  ],
+  "cast": 
+  [
+    {
+      "name": "Mark Hamill",
+      "character": "Luke Skywalker"
+    },
+    {
+      "name": "Harrison Ford",
+      "character": "Han Solo"
+    },
+    {
+      "name": "Carrie Fisher",
+      "character": "Princess Leia Organa"
+    },
+    {
+      "name": "Peter Cushing",
+      "character": "Grand Moff Tarkin"
+    },
+    {
+      "name": "Alec Guinness",
+      "character": "Obi-Wan \"Ben\" Kenobi"
+    },
+    {
+      "name": "Anthony Daniels",
+      "character": "See Threepio (C-3PO)"
+    },
+    {
+      "name": "Kenny Baker",
+      "character": "Artoo-Detoo (R2-D2)"
+    },
+    {
+      "name": "Peter Mayhew",
+      "character": "Chewbacca"
+    },
+    {
+      "name": "David Prowse",
+      "character": "Darth Vader"
+    },
+    {
+      "name": "James Earl Jones",
+      "character": "Voice of Darth Vader (voice)"
+    },
+    {
+      "name": "Phil Brown",
+      "character": "Uncle Owen"
+    },
+    {
+      "name": "Shelagh Fraser",
+      "character": "Aunt Beru"
+    },
+    {
+      "name": "Jack Purvis",
+      "character": "Chief Jawa"
+    },
+    {
+      "name": "Eddie Byrne",
+      "character": "General Willard"
+    },
+    {
+      "name": "Denis Lawson",
+      "character": "Red Two (Wedge)"
+    },
+    {
+      "name": "Garrick Hagon",
+      "character": "Red Three (Biggs)"
+    },
+    {
+      "name": "Don Henderson",
+      "character": "General Taggi"
+    },
+    {
+      "name": "Leslie Schofield",
+      "character": "Commander #1"
+    },
+    {
+      "name": "Richard LeParmentier",
+      "character": "General Motti"
+    },
+    {
+      "name": "Michael Leader",
+      "character": "Stormtrooper"
+    },
+    {
+      "name": "Alex McCrindle",
+      "character": "General Dodonna"
+    },
+    {
+      "name": "Drewe Henley",
+      "character": "Red Leader"
+    },
+    {
+      "name": "Jack Klaff",
+      "character": "Red Four (John \"D\")"
+    },
+    {
+      "name": "William Hootkins",
+      "character": "Red Six (Porkins)"
+    },
+    {
+      "name": "Angus MacInnes",
+      "character": "Gold Leader"
+    },
+    {
+      "name": "Jeremy Sinden",
+      "character": "Gold Two"
+    },
+    {
+      "name": "Graham Ashley",
+      "character": "Gold Five"
+    },
+    {
+      "name": "David Ankrum",
+      "character": "Red Two (voice) (uncredited)"
+    },
+    {
+      "name": "Mark Austin",
+      "character": "Boba Fett (special edition) (uncredited)"
+    },
+    {
+      "name": "Scott Beach",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Lightning Bear",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Jon Berg",
+      "character": "Cantina Alien (uncredited)"
+    },
+    {
+      "name": "Doug Beswick",
+      "character": "Cantina Alien (uncredited)"
+    },
+    {
+      "name": "Paul Blake",
+      "character": "Greedo (uncredited)"
+    },
+    {
+      "name": "Janice Burchette",
+      "character": "Nabrun Leids (uncredited)"
+    },
+    {
+      "name": "Ted Burnett",
+      "character": "Wuher (uncredited)"
+    },
+    {
+      "name": "John Chapman",
+      "character": "Drifter (Red 12) (uncredited)"
+    },
+    {
+      "name": "Gilda Cohen",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Tim Condren",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Barry Copping",
+      "character": "Wioslea (uncredited)"
+    },
+    {
+      "name": "Alfie Curtis",
+      "character": "Dr. Evazan (uncredited)"
+    },
+    {
+      "name": "Robert Davies",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Maria De Aragon",
+      "character": "Greedo (uncredited)"
+    },
+    {
+      "name": "Robert A. Denham",
+      "character": "Hrchek Kal Fas (uncredited)"
+    },
+    {
+      "name": "Frazer Diamond",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Peter Diamond",
+      "character": "Stormtrooper / Tusken Raider / Death Star Trooper "
+    },
+    {
+      "name": "Warwick Diamond",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Sadie Eden",
+      "character": "Garindan (uncredited)"
+    },
+    {
+      "name": "Kim Falkinburg",
+      "character": "Djas Puhr (uncredited)"
+    },
+    {
+      "name": "Harry Fielder",
+      "character": "Death Star Trooper (uncredited)"
+    },
+    {
+      "name": "Ted Gagliano",
+      "character": "Stormtrooper with Binoculars (uncredited)"
+    },
+    {
+      "name": "Salo Gardner",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Steve Gawley",
+      "character": "Death Star Trooper (uncredited)"
+    },
+    {
+      "name": "Barry Gnome",
+      "character": "Kabe (uncredited)"
+    },
+    {
+      "name": "Rusty Goffe",
+      "character": "Kabe / Jawa / GONK Droid (uncredited)"
+    },
+    {
+      "name": "Isaac Grand",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Nelson Hall",
+      "character": "Stormtrooper (special edition) (uncredited)"
+    },
+    {
+      "name": "Reg Harding",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Alan Harris",
+      "character": "Leia's Rebel Escort (uncredited)"
+    },
+    {
+      "name": "Frank Henson",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Christine Hewett",
+      "character": "Brea Tonnika (uncredited)"
+    },
+    {
+      "name": "Arthur Howell",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Tommy Ilsley",
+      "character": "Ponda Baba (uncredited)"
+    },
+    {
+      "name": "Joe Johnston",
+      "character": "Death Star Trooper (uncredited)"
+    },
+    {
+      "name": "Annette Jones",
+      "character": "Mosep (uncredited)"
+    },
+    {
+      "name": "Linda Jones",
+      "character": "Chall Bekan (uncredited)"
+    },
+    {
+      "name": "Joe Kaye",
+      "character": "Solomohal (uncredited)"
+    },
+    {
+      "name": "Colin Michael Kitchens",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Melissa Kurtz",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Tiffany L. Kurtz",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Al Lampert",
+      "character": "Daine Jir (uncredited)"
+    },
+    {
+      "name": "Anthony Lang",
+      "character": "BoShek (uncredited)"
+    },
+    {
+      "name": "Laine Liska",
+      "character": "Muftak / Cantina Band Member (uncredited)"
+    },
+    {
+      "name": "Derek Lyons",
+      "character": "Temple Guard / Medal Bearer (uncredited)"
+    },
+    {
+      "name": "Mahjoub",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Alf Mangan",
+      "character": "Takeel (uncredited)"
+    },
+    {
+      "name": "Rick McCallum",
+      "character": "Stormtrooper (special edition) (uncredited)"
+    },
+    {
+      "name": "Grant McCune",
+      "character": "Death Star Gunner (uncredited)"
+    },
+    {
+      "name": "Geoffrey Moon",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Mandy Morton",
+      "character": "Swilla Corey (uncredited)"
+    },
+    {
+      "name": "Lorne Peterson",
+      "character": "Massassi Base Rebel Scout (uncredited)"
+    },
+    {
+      "name": "Marcus Powell",
+      "character": "Rycar Ryjerd (uncredited)"
+    },
+    {
+      "name": "Shane Rimmer",
+      "character": "InCom Engineer (uncredited)"
+    },
+    {
+      "name": "Pam Rose",
+      "character": "Leesub Sirln (uncredited)"
+    },
+    {
+      "name": "George Roubicek",
+      "character": "Cmdr. Praji (Imperial Officer #2 on rebel ship) (u"
+    },
+    {
+      "name": "Erica Simmons",
+      "character": "Tawss Khaa (uncredited)"
+    },
+    {
+      "name": "Angela Staines",
+      "character": "Senni Tonnika (uncredited)"
+    },
+    {
+      "name": "George Stock",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Roy Straite",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Peter Sturgeon",
+      "character": "Sai'torr Kal Fas (uncredited)"
+    },
+    {
+      "name": "Peter Sumner",
+      "character": "Lt. Pol Treidum (uncredited)"
+    },
+    {
+      "name": "John Sylla",
+      "character": "Cantina Voices (voice) (uncredited)"
+    },
+    {
+      "name": "Tom Sylla",
+      "character": "Massassi Outpost Announcer / Various Voices (voice"
+    },
+    {
+      "name": "Malcolm Tierney",
+      "character": "Lt. Shann Childsen (uncredited)"
+    },
+    {
+      "name": "Phil Tippett",
+      "character": "Cantina Alien (uncredited)"
+    },
+    {
+      "name": "Burnell Tucker",
+      "character": "Del Goren (uncredited)"
+    },
+    {
+      "name": "Morgan Upton",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Jerry Walter",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Hal Wamsley",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Larry Ward",
+      "character": "Greedo (voice) (uncredited)"
+    },
+    {
+      "name": "Diana Sadley Way",
+      "character": "Thuku (uncredited)"
+    },
+    {
+      "name": "Harold Weed",
+      "character": "Ketwol / Melas (uncredited)"
+    },
+    {
+      "name": "Bill Weston",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Steve 'Spaz' Williams",
+      "character": "Mos Eisley Citizen (special edition) (uncredited)"
+    },
+    {
+      "name": "Fred Wood",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Colin Higgins",
+      "character": "Rebel Pilot (uncredited)"
+    }
+  ],
+  "movie": 
+    {
+      "id": 11,
+      "imdb_id": 76759,
+      "title": "Star Wars",
+      "orignial_title": "256",
+      "original_language": "en",
+      "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+      "tagline": "A long time ago in a galaxy far, far away...",
+      "popularity": 42.1497,
+      "release_date": "1977-05-25",
+      "runtime": 121
+    },
     "search_collections":
         [
             {

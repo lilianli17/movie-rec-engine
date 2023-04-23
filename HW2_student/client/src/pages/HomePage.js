@@ -3,7 +3,7 @@ import { Container, Divider, Link } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import LazyTable from '../components/LazyTable';
-import SongCard from '../components/SongCard';
+import MovieInfoPage from '../components/SongCard';
 const config = require('../config.json');
 
 export default function HomePage() {

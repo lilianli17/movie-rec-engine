@@ -79,13 +79,9 @@ const random = async function(req, res) {
 // Route 3: GET /movie/:id
 const movie = async function(req, res) {
   connection.query(`
-  SELECT M.*, G.genre FROM
-    (SELECT *
-    FROM Movies
-    WHERE id = ${req.params.id}) M
-  LEFT JOIN 
-    (SELECT * FROM Genres WHERE id = ${req.params.id}) G
-  ON M.id = G.id
+  SELECT *
+  FROM Movies
+  WHERE id = ${req.params.id}) 
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -94,6 +90,64 @@ const movie = async function(req, res) {
       res.json(data[0]);
     }
   });
+}
+
+// const get_genres = async function(req, res) {
+//   connection.query(`
+//     SELECT *
+//     FROM Genres
+//     WHERE id = ${req.params.id}
+//   `, (err, data) => {
+//     if (err || data.length === 0) {
+//       console.log(err);
+//       res.json([]);
+//     } else {
+//       res.json(data);
+//     }
+//   });
+// }
+
+const search_crew = async function(req, res) {
+  if (req.params.movie_id === undefined) {
+    res.status(400).send(`movie is not specified`);
+  } else {
+    const movie_id = req.params.movie_id ?? '';
+    connection.query(`
+      SELECT name, job, department
+      FROM Crew
+      JOIN Movies on Movies.id = Crew.id
+      WHERE Movies.id = ${movie_id}
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(data);
+      }
+    });
+  }
+}
+
+// Search cast members (join movie)
+const search_cast = async function(req, res) {
+  if (req.params.movie_id === undefined) {
+    res.status(400).send(`movie is not specified`);
+  } else {
+    const movie_id = req.params.movie_id;
+    connection.query(`
+      SElECT c.name, c.character
+      FROM Cast c
+      JOIN Movies on Movies.id = c.id
+      WHERE Movies.id = ${movie_id}
+    `, (err, data) => {
+      if (err || data.length === 0) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(data);
+      }
+    });
+  }
 }
 
 const top_popular = async function(req, res) {
@@ -373,6 +427,8 @@ module.exports = {
   get_similar,
   search_collections,
   search_movies,
+  search_cast,
+  search_crew,
   get_similar_genres,
   get_similar_crew,
   get_similar_cast,

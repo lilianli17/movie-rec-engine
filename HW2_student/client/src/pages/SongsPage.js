@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 import SongCard from '../components/SongCard';
-import { formatDuration } from '../helpers/formatter';
 const config = require('../config.json');
 
 export default function SongsPage() {
@@ -11,7 +15,9 @@ export default function SongsPage() {
   const [data, setData] = useState([]);
   const [selectedSongId, setSelectedSongId] = useState(null);
 
+  const [original_title, setOriginal_title] = useState('');
   const [title, setTitle] = useState('');
+
   const [runtime, setRuntime] = useState([0, 1256]);
   const [popularity, setPopularity] = useState([0]);
   const [genre, setGenre] = useState(['']);
@@ -46,8 +52,8 @@ export default function SongsPage() {
       .then(resJson => {
         // DataGrid expects an array of objects with a unique id.
         // To accomplish this, we use a map with spread syntax (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-        const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
-        setData(songsWithId);
+        const movieWithId = resJson.map((movie) => ({ id: movie.id, ...movie }));
+        setData(movieWithId);
       });
   }
 
@@ -56,17 +62,13 @@ export default function SongsPage() {
   // LazyTable component. The big difference is we provide all data to the DataGrid component
   // instead of loading only the data we need (which is necessary in order to be able to sort by column)
   const columns = [
-    { field: 'title', headerName: 'Title', width: 300, renderCell: (params) => (
-        <Link onClick={() => setSelectedSongId(params.row.song_id)}>{params.value}</Link>
+    { field: 'original_title', headerName: 'Title', width: 300, renderCell: (params) => (
+        <Link onClick={() => setSelectedMovieId(params.row.id)}>{params.value}</Link>
     ) },
-    { field: 'duration', headerName: 'Duration' },
-    { field: 'plays', headerName: 'Plays' },
-    { field: 'danceability', headerName: 'Danceability' },
-    { field: 'energy', headerName: 'Energy' },
-    { field: 'valence', headerName: 'Valence' },
-    { field: 'tempo', headerName: 'Tempo' },
-    { field: 'key_mode', headerName: 'Key' },
-    { field: 'explicit', headerName: 'Explicit' },
+    { field: 'runtime', headerName: 'Runtime' },
+    { field: 'popularity', headerName: 'Popularity' },
+    { field: 'release_date', headerName: 'Release Date' },
+    { field: 'genre', headerName: 'Genre' },
   ]
 
   // This component makes uses of the Grid component from MUI (https://mui.com/material-ui/react-grid/).
@@ -78,11 +80,11 @@ export default function SongsPage() {
   // will automatically lay out all the grid items into rows based on their xs values.
   return (
     <Container>
-      {selectedSongId && <SongCard songId={selectedSongId} handleClose={() => setSelectedSongId(null)} />}
-      <h2>Search Songs</h2>
+      {selectedMovieId && <SongCard songId={selectedMovieId} handleClose={() => setSelectedMovieId(null)} />}
+      <h2>Search Movies</h2>
       <Grid container spacing={6}>
         <Grid item xs={8}>
-          <TextField label='Title' value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%" }}/>
+          <TextField label='Title' value={original_title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%" }}/>
         </Grid>
         <Grid item xs={4}>
           <FormControlLabel
@@ -91,31 +93,52 @@ export default function SongsPage() {
           />
         </Grid>
         <Grid item xs={6}>
-          <p>Duration</p>
+          <p>Runtime (minutes)</p>
           <Slider
-            value={duration}
-            min={60}
-            max={660}
+            value={runtime}
+            min={0}
+            max={1256}
             step={10}
             onChange={(e, newValue) => setDuration(newValue)}
             valueLabelDisplay='auto'
-            valueLabelFormat={value => <div>{formatDuration(value)}</div>}
+            valueLabelFormat={value => <div>{value}</div>}
           />
         </Grid>
         <Grid item xs={6}>
-          <p>Plays (millions)</p>
+          <p>Popularity</p>
           <Slider
-            value={plays}
+            value={popularity}
             min={0}
-            max={1100000000}
-            step={10000000}
+            max={20}
+            step={0.1}
             onChange={(e, newValue) => setPlays(newValue)}
             valueLabelDisplay='auto'
-            valueLabelFormat={value => <div>{value / 1000000}</div>}
+            valueLabelFormat={value => <div>{value}</div>}
           />
         </Grid>
         {/* TODO (TASK 24): add sliders for danceability, energy, and valence (they should be all in the same row of the Grid) */}
         {/* Hint: consider what value xs should be to make them fit on the same row. Set max, min, and a reasonable step. Is valueLabelFormat is necessary? */}
+        <Grid item xs={6}>
+          <p>Release Date : From</p>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DateCalendar', 'DateCalendar']}>
+                <DemoItem label="Controlled calendar">
+                  <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
+                </DemoItem>
+            </DemoContainer>
+            </LocalizationProvider>
+        </Grid>
+        <Grid item xs={6}>
+          <p>Release Date : To</p>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DateCalendar', 'DateCalendar']}>
+                <DemoItem label="Controlled calendar">
+                  <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
+                </DemoItem>
+            </DemoContainer>
+            </LocalizationProvider>
+        </Grid>
+           
       </Grid>
       <Button onClick={() => search() } style={{ left: '50%', transform: 'translateX(-50%)' }}>
         Search
