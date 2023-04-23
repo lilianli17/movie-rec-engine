@@ -3,22 +3,6 @@ const supertest = require('supertest');
 const app = require('../server');
 const results = require("./results.json")
 
-// test('GET /author/name', async () => {
-//   await supertest(app).get('/author/name')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.text).toMatch(/(?!.* John Doe$)^Created by .*$/);
-//     });
-// });
-
-// test('GET /author/pennkey', async () => {
-//   await supertest(app).get('/author/pennkey')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.text).toMatch(/(?!.* jdoe$)^Created by .*$/);
-//     });
-// });
-
 test('GET /random', async () => {
   await supertest(app).get('/random')
     .expect(200)
@@ -36,36 +20,35 @@ test('GET /random', async () => {
     });
 });
 
-test('GET /movie/31879', async () => {
-  await supertest(app).get('/movie/31879')
+test('GET /movie/11 Star Wars', async () => {
+  await supertest(app).get('/movie/11')
     .expect(200)
     .then((res) => {
       expect(res.body).toStrictEqual(results.movie)
     });
  });
 
-// test('GET /album/3lS1y25WAhcqJDATJK70Mq', async () => {
-//   await supertest(app).get('/album/3lS1y25WAhcqJDATJK70Mq')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.album)
-//     });
-// });
+test('GET /crew/11 Star Wars', async () => {
+  await supertest(app).get('/crew/11')
+  .expect(200)
+  .then((res) => {
+    expect(res.body).toStrictEqual(results.crew)
+  });
+});
 
-// test('GET /albums', async () => {
-//   await supertest(app).get('/albums')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.albums)
-//     });
-// });
-//?title=all&explicit=true&energy_low=0.5&valence_low=0.2&valence_high=0.8'
+test('GET /cast/11 Star Wars', async () => {
+  await supertest(app).get('/cast/11')
+  .expect(200)
+  .then((res) => {
+    expect(res.body).toStrictEqual(results.cast)
+  });
+});
 
 test('GET /search_collections', async () => {
   await supertest(app).get('/search_collections/?collection=Three Colors Collection')
     .expect(200)
     .then((res) => {
-        console.log(res);
+        // console.log(res);
         expect(res.body).toStrictEqual(results.search_collections);
     });
 });
@@ -126,47 +109,6 @@ test('GET /get_similar_genres/100', async () => {
       });
   });
 
-// // test('GET /top_songs page 3', async () => {
-// //   await supertest(app).get('/top_songs?page=3')
-// //     .expect(200)
-// //     .then((res) => {
-// //       expect(res.body).toStrictEqual(results.top_songs_page_3)
-// //     });
-// // });
-
-// test('GET /top_songs page 5 page_size 3', async () => {
-//   await supertest(app).get('/top_songs?page=5&page_size=3')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.top_songs_page_5_page_size_3)
-//     });
-// });
-
-// test('GET /top_albums all', async () => {
-//   await supertest(app).get('/top_albums')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body.length).toEqual(12)
-//       expect(res.body[7]).toStrictEqual(results.top_albums_all_7)
-//     });
-// });
-
-// test('GET /top_albums page 2', async () => {
-//   await supertest(app).get('/top_albums?page=2')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.top_albums_page_2)
-//     });
-// });
-
-// test('GET /top_albums page 5 page_size 1', async () => {
-//   await supertest(app).get('/top_albums?page=5&page_size=1')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.top_albums_page_5_page_size_1)
-//     });
-// });
-
 test('GET /search_movies default', async () => {
    await supertest(app).get('/search_movies')
      //.expect(200)
@@ -185,11 +127,3 @@ test('GET /search_movies default', async () => {
        });
      });
 });
-
-// test('GET /search_songs filtered', async () => {
-//   await supertest(app).get('/search_songs?popularity_Low=15&genre='Crime'&valence_high=0.8')
-//     .expect(200)
-//     .then((res) => {
-//       expect(res.body).toStrictEqual(results.search_songs_filtered)
-//     });
-// });

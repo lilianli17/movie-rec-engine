@@ -48,43 +48,7 @@ const movie = async function(req, res) {
 
 // Route 3: GET /crew/:title
 // Search crew members (join movie)
-const search_crew = async function(req, res) {
-  const title = req.query.title ?? '';
-  connection.query(`
-    SELECT name, job, department
-    FROM Crew
-    JOIN Movies on Movies.id = Crew.id
-    WHERE original_title = '${title}'
-  `, (err, data) => {
-    if (err || data.length === 0) {
-      console.log(err);
-      res.json({});
-    } else {
-      res.json(data);
-    }
-  }
-  );
-}
 
-// Route 4: GET /cast/:title
-// Search cast members (join movie)
-const search_cast = async function(req, res) {
-  const title = req.query.title ?? '';
-  connection.query(`
-    SElECT name, character
-    FROM Cast
-    JOIN Movies on Movies.id = Cast.id
-    WHERE original_title = '${title}'
-  `, (err, data) => {
-    if (err || data.length === 0) {
-      console.log(err);
-      res.json({});
-    } else {
-      res.json(data);
-    }
-  }
-  );
-}
 
 
 
