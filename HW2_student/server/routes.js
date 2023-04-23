@@ -141,29 +141,6 @@ const get_movies_collection = async function(req, res) {
     });
   }
 
-// Route 4: List the collections and the number of movies in each collection, 
-// ordered by the number of movies in descending order.
-// const album = async function(req, res) {
-//   // TODO (TASK 5): implement a route that lists the collections and 
-//   //the number of movies in each collection, 
-//   // ordered by the number of movies in descending order.
-//   connection.query(`
-//   SELECT collection, COUNT(*) AS num_movies
-//   FROM Collections
-//   JOIN Movies m ON Collections.id = m.id
-//   GROUP BY collection
-//   ORDER BY num_movies DESC;
-//   `, (err, data) => {
-//     if (err || data.length === 0) {
-//       console.log(err);
-//       res.json({});
-//     } else {
-//       res.json(data[0]);
-//     }
-//   });
-
-// }
-
 // Route 5: GET top ten most similar movies to the given movie
 const get_similar = async function(req, res) {
   connection.query(`
@@ -179,7 +156,7 @@ const get_similar = async function(req, res) {
   WHERE m1.id = '${req.params.id}' AND m2.id != m1.id
   GROUP BY m2.original_title
   ORDER BY similarity_score DESC
-  LIMIT 10;
+  LIMIT 1000;
   `, (err, data) => {
     if (err || data.length === 0 || !data) {
       console.log(err);
@@ -382,44 +359,7 @@ const search_movies = async function(req, res) {
          }
        }
   )
-
-  // if (!title) {
-  //     connection.query(`
-  //       SELECT M.id,imdb_id,original_title,original_language,overview,popularity,release_date,runtime,G.genre
-  //       FROM (SELECT * FROM Movies WHERE
-  //         popularity >= ${popularity_Low} AND release_date BETWEEN ${release_date_From} AND ${release_date_To}
-  //         AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}) M
-  //       JOIN (SELECT id, genre FROM Genres WHERE genre IN ${genre}) G ON M.id=G.id
-  //       ORDER BY original_title ASC
-  //     `, (err, data) => {
-  //       if (err || data.length === 0) {
-  //         console.log(err);
-  //         res.json([]);
-  //       }
-  //       else {
-  //         res.json(data);
-  //       }
-  //     }
-  //     );}
-  // else {
-  //     connection.query(`
-  //       SELECT M.id,imdb_id,original_title,original_language,overview,popularity,release_date,runtime,G.genre
-  //       FROM (SELECT * FROM Movies WHERE
-  //         popularity >= ${popularity_Low} AND release_date BETWEEN ${release_date_From} AND ${release_date_To} 
-  //         AND original_title LIKE '%${title}%' AND runtime BETWEEN ${runtime_Low} AND ${runtime_High}) M
-  //       JOIN (SELECT id, genre FROM Genres WHERE genre IN ${genre}) G ON M.id=G.id
-  //       ORDER BY original_title ASC
-  //     `, (err, data) => {
-  //       if (err || data.length === 0) {
-  //         console.log(err);
-  //         res.json([]);
-  //       }
-  //       else {
-  //         res.json(data);
-  //       }
-  //     }
-  //     );
-  // }
+ 
 } 
 
 module.exports = {
