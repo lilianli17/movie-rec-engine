@@ -16,6 +16,8 @@ export default function SongsPage() {
   const [selectedSongId, setSelectedSongId] = useState(null);
 
   const [original_title, setOriginal_title] = useState('');
+  const [title, setTitle] = useState('');
+
   const [runtime, setRuntime] = useState([0, 1256]);
   const [popularity, setPopularity] = useState([0]);
   const [genre, setGenre] = useState(['']);
@@ -40,7 +42,7 @@ export default function SongsPage() {
   // }, []);
 
   const search = () => {
-    fetch(`http://${config.server_host}:${config.server_port}/search_movies?original_title=${original_title}` +
+    fetch(`http://${config.server_host}:${config.server_port}/search_movies?original_title=${title}` +
       `&popularity_Low=${popularity[0]}}` +
       `&runtime_low=${runtime[0]}&runtime_high=${runtime[1]}` +
       `&release_date_From=${release_date[0]}&release_date_To=${release_date[1]}` +
