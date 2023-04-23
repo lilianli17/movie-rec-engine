@@ -352,7 +352,7 @@ const search_collections = async function(req, res) {
  * ADVANCED INFO ROUTES *
  ************************/
 
-// Route 6: GET /search_movies
+// Route 7: GET /search_movies
 const search_movies = async function(req, res) {
   // search based on title (string), genre (drop down), popularity, release_year
   const original_title = req.query.original_title ??'';
