@@ -533,14 +533,25 @@
       "id": 11,
       "imdb_id": 76759,
       "title": "Star Wars",
-      "orignial_title": "256",
+      "orignial_title": "Star Wars",
       "original_language": "en",
       "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
       "tagline": "A long time ago in a galaxy far, far away...",
       "popularity": 42.1497,
-      "release_date": "1977-05-25",
+      "release_date": "1977-05-25T04:00:00.000Z",
       "runtime": 121
     },
+    "genres":[
+      {
+        "genre": "Action"
+      },
+      {
+        "genre": "Adventure"
+      },
+      {
+        "genre": "Science Fiction"
+      }
+    ],
     "search_collections":
         [
             {

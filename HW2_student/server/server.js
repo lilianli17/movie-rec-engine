@@ -15,6 +15,7 @@ app.get('/random', routes.random);
 app.get('/movie/:movie_id', routes.movie);
 app.get('/crew/:movie_id', routes.search_crew);
 app.get('/cast/:movie_id', routes.search_cast);
+app.get('/genre/:movie_id', routes.get_genres);
 app.get('/top_popular', routes.top_popular);
 app.get('/top_popular_genre/:genre', routes.top_popular_genre);
 app.get('/get_similar/:id', routes.get_similar);

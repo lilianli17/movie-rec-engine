@@ -15,7 +15,9 @@ test('GET /random', async () => {
         overview: expect.any(String),
         popularity: expect.any(Number),
         release_date: expect.any(String),
-        runtime: expect.any(Number)
+        runtime: expect.any(Number),
+        title: expect.any(String),
+        tagline: expect.any(String),
       }]);
     });
 });
@@ -33,6 +35,14 @@ test('GET /crew/11 Star Wars', async () => {
   .expect(200)
   .then((res) => {
     expect(res.body).toStrictEqual(results.crew)
+  });
+});
+
+test('GET /genre/11 Star Wars', async () => {
+  await supertest(app).get('/genre/11')
+  .expect(200)
+  .then((res) => {
+    expect(res.body).toStrictEqual(results.genres)
   });
 });
 

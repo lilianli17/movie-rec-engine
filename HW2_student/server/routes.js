@@ -41,47 +41,11 @@ const author = async function(req, res) {
 
 // Route 2: GET /random
 const random = async function(req, res) {
-  // you can use a ternary operator to check the value of request query values
-  // which can be particularly useful for setting the default value of queries
-  // note if users do not provide a value for the query it will be undefined, which is falsey
-
-  // Here is a complete example of how to query the database in JavaScript.
-  // Only a small change (unrelated to querying) is required for TASK 3 in this route.
   connection.query(`
     SELECT *
     FROM Movies
     ORDER BY RAND()
     LIMIT 1
-  `, (err, data) => {
-    if (err || data.length === 0) {
-      // if there is an error for some reason, or if the query is empty (this should not be possible)
-      // print the error message and return an empty object instead
-      console.log(err);
-      res.json({});
-    } else {
-      // Here, we return results of the query as an object, keeping only relevant data
-      // being song_id and title which you will add. In this case, there is only one song
-      // so we just directly access the first element of the query results array (data)
-      // TODO (TASK 3): also return the song title in the response
-      res.json(
-        data
-        //song_id: data[0].song_id,
-        //title: data[0].title
-        );
-    }
-  });
-}
-
-/********************************
- * BASIC SONG/ALBUM INFO ROUTES *
- ********************************/
-
-// Route 3: GET /movie/:id
-const movie = async function(req, res) {
-  connection.query(`
-  SELECT *
-  FROM Movies
-  WHERE id = ${req.params.id}) 
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -92,20 +56,41 @@ const movie = async function(req, res) {
   });
 }
 
-// const get_genres = async function(req, res) {
-//   connection.query(`
-//     SELECT *
-//     FROM Genres
-//     WHERE id = ${req.params.id}
-//   `, (err, data) => {
-//     if (err || data.length === 0) {
-//       console.log(err);
-//       res.json([]);
-//     } else {
-//       res.json(data);
-//     }
-//   });
-// }
+/********************************
+ * BASIC SONG/ALBUM INFO ROUTES *
+ ********************************/
+
+// Route 3: GET /movie/:movie_id
+const movie = async function(req, res) {
+  connection.query(`
+  SELECT *
+  FROM Movies
+  WHERE id = ${req.params.movie_id}
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json({});
+    } else {
+      res.json(data[0]);
+    }
+  });
+}
+
+// Route 4: GET /genre/:movie_id
+const get_genres = async function(req, res) {
+  connection.query(`
+    SELECT genre
+    FROM Genres
+    WHERE id = ${req.params.movie_id}
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+}
 
 const search_crew = async function(req, res) {
   if (req.params.movie_id === undefined) {
@@ -424,6 +409,7 @@ module.exports = {
   author,
   random,
   movie,
+  get_genres,
   get_similar,
   search_collections,
   search_movies,
