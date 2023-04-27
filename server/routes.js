@@ -76,12 +76,46 @@ const movie = async function(req, res) {
   });
 }
 
-// Route 4: GET /genre/:movie_id
+const get_all_genres = async function(req, res) {
+  connection.query(`
+    SELECT DISTINCT genre
+    FROM Genres
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+}
+
+// Route 4: GET /genre/:movie_id get genres of a movie
 const get_genres = async function(req, res) {
   connection.query(`
     SELECT genre
     FROM Genres
     WHERE id = ${req.params.movie_id}
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+}
+
+// get movies by genres
+const get_movies_by_genres = async function(req, res) {
+  const genre = req.params.genre ?? ['"Crime"','"Drama"','"Comedy"','"Action"','"Thriller"','"Adventure"','"Science Fiction"', '"Animation"','"Family"','"Romance"','"Mystery"','"Music"','"Horror"','"Fantasy"','"Documentary"','"War"','"Western"','"History"','"Foreign"', '"TV Movie"'];
+
+  console.log(genre);
+
+  connection.query(`
+      SELECT DISTINCT M.title, M.original_language AS language, M.tagline, M.popularity, M.release_date, M.runtime, M.id
+      FROM (SELECT * FROM Genres WHERE genre IN (${genre})) G
+      JOIN Movies M on M.orignial_title = G.original_title
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -281,9 +315,7 @@ const get_similar_genres = async function(req, res) {
   
   }
 
-// Route 6: GET /top_movies/ top 10
 const search_collections = async function(req, res) {
-  // TODO (TASK 7): implement a route that given an album_id, returns all songs on that album ordered by track number (ascending)
   const original_title = req.query.original_title ?? '';
   const collection = req.query.collection ?? '';
   const keywords = req.query.keywords;
@@ -410,6 +442,8 @@ module.exports = {
   random,
   movie,
   get_genres,
+  get_all_genres,
+  get_movies_by_genres,
   get_similar,
   search_collections,
   search_movies,

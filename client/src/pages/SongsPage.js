@@ -1,59 +1,48 @@
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Container, FormControlLabel, Grid, Link, Slider, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import dayjs from 'dayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 import SongCard from '../components/SongCard';
+import { formatDuration } from '../helpers/formatter';
 const config = require('../config.json');
 
 export default function SongsPage() {
   const [pageSize, setPageSize] = useState(10);
   const [data, setData] = useState([]);
   const [selectedSongId, setSelectedSongId] = useState(null);
-
-  const [original_title, setOriginal_title] = useState('');
+  
   const [title, setTitle] = useState('');
-
-  const [runtime, setRuntime] = useState([0, 1256]);
-  const [popularity, setPopularity] = useState([0]);
-  const [genre, setGenre] = useState(['']);
-  const [release_date, setRelease_Date] = useState(['1800-01-01 00:00:00','2023-01-01 00:00:00']);
-  //const [explicit, setExplicit] = useState(false);
+  const [duration, setDuration] = useState([60, 660]);
+  const [plays, setPlays] = useState([0, 1100000000]);
+  const [danceability, setDanceability] = useState([0, 1]);
+  const [energy, setEnergy] = useState([0, 1]);
+  const [valence, setValence] = useState([0, 1]);
+  const [explicit, setExplicit] = useState(false);
 
   useEffect(() => {
-    fetch(`http://${config.server_host}:${config.server_port}/search_movies`)
+    fetch(`http://${config.server_host}:${config.server_port}/search_songs`)
       .then(res => res.json())
       .then(resJson => {
-        const movieWithId = resJson.map((movie) => ({ id: movie.id, ...movie }));
-        setData(movieWithId);
+        const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
+        setData(songsWithId);
       });
   }, []);
-  // useEffect(() => {
-  //   fetch(`http://${config.server_host}:${config.server_port}/search_movies`)
-  //     .then(res => res.json())
-  //     .then(resJson => {
-  //       const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
-  //       setData(songsWithId);
-  //     });
-  // }, []);
 
   const search = () => {
-    fetch(`http://${config.server_host}:${config.server_port}/search_movies?original_title=${title}` +
-      `&popularity_Low=${popularity[0]}}` +
-      `&runtime_low=${runtime[0]}&runtime_high=${runtime[1]}` +
-      `&release_date_From=${release_date[0]}&release_date_To=${release_date[1]}` +
-      `&genre=${genre[0]}`
+    fetch(`http://${config.server_host}:${config.server_port}/search_songs?title=${title}` +
+      `&duration_low=${duration[0]}&duration_high=${duration[1]}` +
+      `&plays_low=${plays[0]}&plays_high=${plays[1]}` +
+      `&danceability_low=${danceability[0]}&danceability_high=${danceability[1]}` +
+      `&energy_low=${energy[0]}&energy_high=${energy[1]}` +
+      `&valence_low=${valence[0]}&valence_high=${valence[1]}` +
+      `&explicit=${explicit}`
     )
       .then(res => res.json())
       .then(resJson => {
         // DataGrid expects an array of objects with a unique id.
         // To accomplish this, we use a map with spread syntax (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-        const movieWithId = resJson.map((movie) => ({ id: movie.id, ...movie }));
-        setData(movieWithId);
+        const songsWithId = resJson.map((song) => ({ id: song.song_id, ...song }));
+        setData(songsWithId);
       });
   }
 
@@ -62,13 +51,17 @@ export default function SongsPage() {
   // LazyTable component. The big difference is we provide all data to the DataGrid component
   // instead of loading only the data we need (which is necessary in order to be able to sort by column)
   const columns = [
-    { field: 'original_title', headerName: 'Title', width: 300, renderCell: (params) => (
-        <Link onClick={() => setSelectedMovieId(params.row.id)}>{params.value}</Link>
+    { field: 'title', headerName: 'Title', width: 300, renderCell: (params) => (
+        <Link onClick={() => setSelectedSongId(params.row.song_id)}>{params.value}</Link>
     ) },
-    { field: 'runtime', headerName: 'Runtime' },
-    { field: 'popularity', headerName: 'Popularity' },
-    { field: 'release_date', headerName: 'Release Date' },
-    { field: 'genre', headerName: 'Genre' },
+    { field: 'duration', headerName: 'Duration' },
+    { field: 'plays', headerName: 'Plays' },
+    { field: 'danceability', headerName: 'Danceability' },
+    { field: 'energy', headerName: 'Energy' },
+    { field: 'valence', headerName: 'Valence' },
+    { field: 'tempo', headerName: 'Tempo' },
+    { field: 'key_mode', headerName: 'Key' },
+    { field: 'explicit', headerName: 'Explicit' },
   ]
 
   // This component makes uses of the Grid component from MUI (https://mui.com/material-ui/react-grid/).
@@ -80,11 +73,11 @@ export default function SongsPage() {
   // will automatically lay out all the grid items into rows based on their xs values.
   return (
     <Container>
-      {selectedMovieId && <SongCard songId={selectedMovieId} handleClose={() => setSelectedMovieId(null)} />}
-      <h2>Search Movies</h2>
+      {selectedSongId && <SongCard songId={selectedSongId} handleClose={() => setSelectedSongId(null)} />}
+      <h2>Search Songs</h2>
       <Grid container spacing={6}>
         <Grid item xs={8}>
-          <TextField label='Title' value={original_title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%" }}/>
+          <TextField label='Title' value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: "100%" }}/>
         </Grid>
         <Grid item xs={4}>
           <FormControlLabel
@@ -92,53 +85,68 @@ export default function SongsPage() {
             control={<Checkbox checked={explicit} onChange={(e) => setExplicit(e.target.checked)} />}
           />
         </Grid>
-        <Grid item xs={6}>
-          <p>Runtime (minutes)</p>
+        <Grid item xs={2.4}>
+          <p>Duration</p>
           <Slider
-            value={runtime}
-            min={0}
-            max={1256}
+            value={duration}
+            min={60}
+            max={660}
             step={10}
             onChange={(e, newValue) => setDuration(newValue)}
             valueLabelDisplay='auto'
-            valueLabelFormat={value => <div>{value}</div>}
+            valueLabelFormat={value => <div>{formatDuration(value)}</div>}
           />
         </Grid>
-        <Grid item xs={6}>
-          <p>Popularity</p>
+        <Grid item xs={2.4}>
+          <p>Plays (millions)</p>
           <Slider
-            value={popularity}
+            value={plays}
             min={0}
-            max={20}
-            step={0.1}
+            max={1100000000}
+            step={10000000}
             onChange={(e, newValue) => setPlays(newValue)}
             valueLabelDisplay='auto'
-            valueLabelFormat={value => <div>{value}</div>}
+            valueLabelFormat={value => <div>{value / 1000000}</div>}
           />
         </Grid>
         {/* TODO (TASK 24): add sliders for danceability, energy, and valence (they should be all in the same row of the Grid) */}
         {/* Hint: consider what value xs should be to make them fit on the same row. Set max, min, and a reasonable step. Is valueLabelFormat is necessary? */}
-        <Grid item xs={6}>
-          <p>Release Date : From</p>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                <DemoItem label="Controlled calendar">
-                  <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
-                </DemoItem>
-            </DemoContainer>
-            </LocalizationProvider>
+        <Grid item xs={2.4}>
+          <p>Danceability</p>
+          <Slider
+            value={danceability}
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={(e, newValue) => setDanceability(newValue)}
+            valueLabelDisplay='auto'
+            valueLabelFormat={value => <div>{value / 1}</div>}
+          />
         </Grid>
-        <Grid item xs={6}>
-          <p>Release Date : To</p>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                <DemoItem label="Controlled calendar">
-                  <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
-                </DemoItem>
-            </DemoContainer>
-            </LocalizationProvider>
+        <Grid item xs={2.4}>
+          <p>Energy</p>
+          <Slider
+            value={energy}
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={(e, newValue) => setEnergy(newValue)}
+            valueLabelDisplay='auto'
+            valueLabelFormat={value => <div>{value / 1}</div>}
+          />
         </Grid>
-           
+        <Grid item xs={2.4}>
+          <p>Valence</p>
+          <Slider
+            value={valence}
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={(e, newValue) => setValence(newValue)}
+            valueLabelDisplay='auto'
+            valueLabelFormat={value => <div>{value / 1}</div>}
+          />
+        </Grid>
       </Grid>
       <Button onClick={() => search() } style={{ left: '50%', transform: 'translateX(-50%)' }}>
         Search

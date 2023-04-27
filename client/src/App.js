@@ -5,6 +5,7 @@ import { createTheme } from "@mui/material/styles";
 
 import NavBar from './components/NavBar';
 import MovieInfoPage from './pages/MovieInfoPage';
+import GenresPage from "./pages/GenresPage";
 
 // import HomePage from './pages/HomePage';
 // import AlbumsPage from './pages/AlbumsPage';
@@ -31,7 +32,9 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
+          {/* <Route path="/" element =/> */}
           <Route path="/movie/:movie_id" element={<MovieInfoPage />} />
+          <Route path="/genres" element={<GenresPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

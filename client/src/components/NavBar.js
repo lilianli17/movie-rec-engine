@@ -36,9 +36,11 @@ export default function NavBar() {
     <AppBar position='static'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <NavText href='/' text='SWIFTIFY' isMain />
-          <NavText href='/albums' text='ALBUMS' />
-          <NavText href='/songs' text='SONGS' />
+          <NavText href='/' text='MOVIE REC' isMain />
+          <NavText href='/albums' text='COLLECTIONS' />
+          <NavText href='/songs' text='MOVIES' />
+          <NavText href='/songs' text='RECOMMENDATION' />
+          <NavText href='/genres' text='GENRES' />
         </Toolbar>
       </Container>
     </AppBar>
