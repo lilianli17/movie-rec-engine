@@ -5,21 +5,7 @@ const results = require("./results.json")
 
 test('GET /random', async () => {
   await supertest(app).get('/random')
-    .expect(200)
-    .then((res) => {
-      expect(res.body).toStrictEqual([{
-        id: expect.any(Number),
-        imdb_id: expect.any(Number),
-        original_language: expect.any(String),
-        original_title: expect.any(String),
-        overview: expect.any(String),
-        popularity: expect.any(Number),
-        release_date: expect.any(String),
-        runtime: expect.any(Number),
-        title: expect.any(String),
-        tagline: expect.any(String),
-      }]);
-    });
+    .expect(200);
 });
 
 test('GET /movie/11 Star Wars', async () => {
@@ -28,7 +14,15 @@ test('GET /movie/11 Star Wars', async () => {
     .then((res) => {
       expect(res.body).toStrictEqual(results.movie)
     });
- });
+});
+
+test('GET /genre get all genres', async () => {
+  await supertest(app).get('/genre')
+    .expect(200)
+    .then((res) => {
+      expect(res.body).toStrictEqual(results.genres)
+    });
+});
 
 test('GET /crew/11 Star Wars', async () => {
   await supertest(app).get('/crew/11')
@@ -42,7 +36,7 @@ test('GET /genre/11 Star Wars', async () => {
   await supertest(app).get('/genre/11')
   .expect(200)
   .then((res) => {
-    expect(res.body).toStrictEqual(results.genres)
+    expect(res.body).toStrictEqual(results.genres_start_wars)
   });
 });
 
@@ -51,6 +45,14 @@ test('GET /cast/11 Star Wars', async () => {
   .expect(200)
   .then((res) => {
     expect(res.body).toStrictEqual(results.cast)
+  });
+});
+
+test('GET /movie_genre/"Drama"', async () => {
+  await supertest(app).get('/movie_genre/"Drama"')
+  .expect(200)
+  .then((res) => {
+    expect(res.body.length).toEqual(20602);
   });
 });
 

@@ -12,34 +12,7 @@ const connection = mysql.createConnection({
 });
 connection.connect((err) => err && console.log(err));
 
-/******************
- * WARM UP ROUTES *
- ******************/
-
-// Route 1: GET /author/:type
-const author = async function(req, res) {
-  // TODO (TASK 1): replace the values of name and pennKey with your own
-  const name = 'Lilian Li';
-  const pennKey = 'jieli17';
-
-  // checks the value of type the request parameters
-  // note that parameters are required and are specified in server.js in the endpoint by a colon (e.g. /author/:type)
-  if (req.params.type === 'name') {
-    // res.send returns data back to the requester via an HTTP response
-    res.send(`Created by ${name}`);
-
-  } else if (req.params.type === 'pennkey') {
-    // TODO (TASK 2): edit the else if condition to check if the request parameter 
-    // is 'pennkey' and if so, send back response 'Created by [pennkey]'
-    res.send(`Created by ${pennKey}`);
-  
-  } else {
-    // we can also send back an HTTP status code to indicate an improper request
-    res.status(400).send(`'${req.params.type}' is not a valid author type. Valid types are 'name' and 'pennkey'.`);
-  }
-}
-
-// Route 2: GET /random
+// Route 1: GET /random
 const random = async function(req, res) {
   connection.query(`
     SELECT *
@@ -56,11 +29,7 @@ const random = async function(req, res) {
   });
 }
 
-/********************************
- * BASIC SONG/ALBUM INFO ROUTES *
- ********************************/
-
-// Route 3: GET /movie/:movie_id
+// Route 2: GET /movie/:movie_id get movie by id
 const movie = async function(req, res) {
   connection.query(`
   SELECT *
@@ -76,6 +45,7 @@ const movie = async function(req, res) {
   });
 }
 
+// Route 3: GET /genre get all genres
 const get_all_genres = async function(req, res) {
   connection.query(`
     SELECT DISTINCT genre
@@ -90,7 +60,7 @@ const get_all_genres = async function(req, res) {
   });
 }
 
-// Route 4: GET /genre/:movie_id get genres of a movie
+// Route 4: GET /genre/:movie_id get genres by movie id
 const get_genres = async function(req, res) {
   connection.query(`
     SELECT genre
@@ -106,12 +76,9 @@ const get_genres = async function(req, res) {
   });
 }
 
-// get movies by genres
+// Route 5: GET /movie_genre/:genre get movies by genre
 const get_movies_by_genres = async function(req, res) {
   const genre = req.params.genre ?? ['"Crime"','"Drama"','"Comedy"','"Action"','"Thriller"','"Adventure"','"Science Fiction"', '"Animation"','"Family"','"Romance"','"Mystery"','"Music"','"Horror"','"Fantasy"','"Documentary"','"War"','"Western"','"History"','"Foreign"', '"TV Movie"'];
-
-  console.log(genre);
-
   connection.query(`
       SELECT DISTINCT M.title, M.original_language AS language, M.tagline, M.popularity, M.release_date, M.runtime, M.id
       FROM (SELECT * FROM Genres WHERE genre IN (${genre})) G
@@ -126,6 +93,7 @@ const get_movies_by_genres = async function(req, res) {
   });
 }
 
+// Route 6: GET /crew/:movie_id get crew by movie id
 const search_crew = async function(req, res) {
   if (req.params.movie_id === undefined) {
     res.status(400).send(`movie is not specified`);
@@ -147,7 +115,7 @@ const search_crew = async function(req, res) {
   }
 }
 
-// Search cast members (join movie)
+// Route 7: GET /cast/:movie_id get cast by movie id
 const search_cast = async function(req, res) {
   if (req.params.movie_id === undefined) {
     res.status(400).send(`movie is not specified`);
@@ -169,72 +137,73 @@ const search_cast = async function(req, res) {
   }
 }
 
+// Route 8: GET /top_popular get top 10 popular movies
 const top_popular = async function(req, res) {
-    connection.query(`
-      SELECT *
-      FROM Movies
-      ORDER BY popularity DESC
-      LIMIT 10
-    `, (err, data) => {
-      if (err || data.length === 0) {
-        console.log(err);
-        res.json([]);
-      } else {
-        res.json(data);
-      }
-    });
+  connection.query(`
+    SELECT *
+    FROM Movies
+    ORDER BY popularity DESC
+    LIMIT 10
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
   }
-
-  const top_popular_genre = async function(req, res) {
-    connection.query(`
-      SELECT *
-      FROM Movies M INNER JOIN Genres G ON M.id = G.id
-      WHERE G.genre = '${req.params.genre}'
-      ORDER BY popularity DESC
-      LIMIT 10
-    `, (err, data) => {
-      if (err || data.length === 0) {
-        console.log(err);
-        res.json([]);
-      } else {
-        res.json(data);
-      }
-    });
-  }
-
-  const get_movies_collection = async function(req, res) {
-    console.log(req.params)
-    connection.query(`
-      SELECT M.id, M.original_title, M.overview, M.popularity, M.runtime, C.collection
-      FROM Collections C LEFT JOIN Movies M ON C.id = M.id
-      WHERE C.coll_id = '${req.params.coll_id}'
-    `, (err, data) => {
-      if (err || data.length === 0) {
-        console.log(err);
-        res.json([]);
-      } else {
-        console.log(data);
-        res.json(data);
-      }
-    });
-  }
-
-  const get_collection = async function(req, res) {
-    connection.query(`
-    SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
-    FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-    WHERE C.coll_id = '${req.params.coll_id}';
-    `, (err, data) => {
-        if (err || data.length === 0 || !data) {
-        console.log(err);
-        res.json({});
-        } else {
-            res.json(data[0]);
-        }
-    });
+  );
 }
 
-// Route 5: GET top ten most similar movies to the given movie
+const top_popular_genre = async function(req, res) {
+  connection.query(`
+    SELECT *
+    FROM Movies M INNER JOIN Genres G ON M.id = G.id
+    WHERE G.genre = '${req.params.genre}'
+    ORDER BY popularity DESC
+    LIMIT 10
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+}
+
+const get_movies_collection = async function(req, res) {
+  console.log(req.params)
+  connection.query(`
+    SELECT M.id, M.original_title, M.overview, M.popularity, M.runtime, C.collection
+    FROM Collections C LEFT JOIN Movies M ON C.id = M.id
+    WHERE C.coll_id = '${req.params.coll_id}'
+  `, (err, data) => {
+    if (err || data.length === 0) {
+      console.log(err);
+      res.json([]);
+    } else {
+      console.log(data);
+      res.json(data);
+    }
+  });
+}
+
+const get_collection = async function(req, res) {
+  connection.query(`
+  SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
+  FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
+  WHERE C.coll_id = '${req.params.coll_id}';
+  `, (err, data) => {
+      if (err || data.length === 0 || !data) {
+      console.log(err);
+      res.json({});
+      } else {
+          res.json(data[0]);
+      }
+  });
+}
+
 const get_similar = async function(req, res) {
   connection.query(`
   SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
@@ -284,170 +253,168 @@ const get_similar_genres = async function(req, res) {
   
   }
 
-  const get_similar_cast = async function(req, res) {
-    connection.query(`
-    SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
-    FROM Movies m1
-    JOIN Cast c1 ON m1.id = c1.id
-    JOIN Movies m2 ON m2.id <> m1.id
-    JOIN Cast c2 ON m2.id = c2.id AND c1.name = c2.name
-    WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
-    GROUP BY m2.original_title
-    ORDER BY similarity_score DESC;
-    `, (err, data) => {
-      if (err || data.length === 0 || !data) {
-        console.log(err);
-        //console.log(id);
-        res.json([]);
-      } else {
-          res.json(data);
-      }
-    });
-  
-  }
-
-  const get_similar_crew = async function(req, res) {
-    connection.query(`
-    SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
-    FROM Movies m1
-    JOIN Crew cr1 ON m1.id = cr1.id
-    JOIN Movies m2 ON m2.id <> m1.id
-    JOIN Crew cr2 ON m2.id = cr2.id AND cr1.name = cr2.name
-    WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
-    GROUP BY m2.original_title
-    ORDER BY similarity_score DESC;
-    `, (err, data) => {
-      if (err || data.length === 0 || !data) {
-        console.log(err);
-        //console.log(id);
-        res.json([]);
-      } else {
-          res.json(data);
-      }
-    });
-  
-  }
-
-  const search_collections = async function(req, res) {
-    const original_title = req.query.original_title ?? '';
-    const collection = req.query.collection ?? '';
-    let genres = NaN
-    if (req.query.genres) {
-      const temp = req.query.genres.split(",");
-      let tempString = "("
-      for (var i = 0; i < temp.length; i++) {
-          tempString += "\'" + temp[i] + "\'" + ",";
-      }
-      tempString = tempString.slice(0, -1);
-      tempString += ")";
-      genres = tempString;
+const get_similar_cast = async function(req, res) {
+  connection.query(`
+  SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
+  FROM Movies m1
+  JOIN Cast c1 ON m1.id = c1.id
+  JOIN Movies m2 ON m2.id <> m1.id
+  JOIN Cast c2 ON m2.id = c2.id AND c1.name = c2.name
+  WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
+  GROUP BY m2.original_title
+  ORDER BY similarity_score DESC;
+  `, (err, data) => {
+    if (err || data.length === 0 || !data) {
+      console.log(err);
+      //console.log(id);
+      res.json([]);
+    } else {
+        res.json(data);
     }
-    let keywords = NaN
-    if (req.query.keywords) {
-      const temp = req.query.keywords.split(",");
-      let tempString = "("
-      for (var i = 0; i < temp.length; i++) {
-          tempString += "\'" + temp[i] + "\'" + ",";
-      }
-      tempString = tempString.slice(0, -1);
-      tempString += ")";
-      keywords = tempString;
+  });
+
+}
+
+const get_similar_crew = async function(req, res) {
+  connection.query(`
+  SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
+  FROM Movies m1
+  JOIN Crew cr1 ON m1.id = cr1.id
+  JOIN Movies m2 ON m2.id <> m1.id
+  JOIN Crew cr2 ON m2.id = cr2.id AND cr1.name = cr2.name
+  WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
+  GROUP BY m2.original_title
+  ORDER BY similarity_score DESC;
+  `, (err, data) => {
+    if (err || data.length === 0 || !data) {
+      console.log(err);
+      //console.log(id);
+      res.json([]);
+    } else {
+        res.json(data);
     }
-    if (!keywords) {
-      if(!genres) {
-          connection.query(`
-          SELECT C.coll_id, C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
-          FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-          WHERE C.coll_id IN (
-            SELECT Co.coll_id
-            FROM Collections Co
-            WHERE Co.original_title LIKE '%${original_title}%'
-          )
-          AND collection LIKE '%${collection}%'
-          GROUP BY C.collection;
-          `, (err, data) => {
-              if (err || data.length === 0) {
-              console.log(err);
-              res.json([]);
-              } else {
-              res.json(data);
-              }
-          });
-          }
-          else {
-              connection.query(`
-              SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
-              FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-              WHERE C.coll_id IN (
-                SELECT Co.coll_id
-                FROM Collections Co
-                WHERE Co.original_title LIKE '%${original_title}%'
-              )
-              AND collection LIKE '%${collection}%'
-              AND G.genre IN ${genres}
-              GROUP BY C.collection;
-              `, (err, data) => {
-                  if (err || data.length === 0) {
-                  console.log(err);
-                  res.json([]);
-                  } else {
-                  res.json(data);
-                  }
-              });
-          }
+  });
+
+}
+
+const search_collections = async function(req, res) {
+  const original_title = req.query.original_title ?? '';
+  const collection = req.query.collection ?? '';
+  let genres = NaN
+  if (req.query.genres) {
+    const temp = req.query.genres.split(",");
+    let tempString = "("
+    for (var i = 0; i < temp.length; i++) {
+        tempString += "\'" + temp[i] + "\'" + ",";
+    }
+    tempString = tempString.slice(0, -1);
+    tempString += ")";
+    genres = tempString;
+  }
+  let keywords = NaN
+  if (req.query.keywords) {
+    const temp = req.query.keywords.split(",");
+    let tempString = "("
+    for (var i = 0; i < temp.length; i++) {
+        tempString += "\'" + temp[i] + "\'" + ",";
+    }
+    tempString = tempString.slice(0, -1);
+    tempString += ")";
+    keywords = tempString;
+  }
+  if (!keywords) {
+    if(!genres) {
+        connection.query(`
+        SELECT C.coll_id, C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
+        FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
+        WHERE C.coll_id IN (
+          SELECT Co.coll_id
+          FROM Collections Co
+          WHERE Co.original_title LIKE '%${original_title}%'
+        )
+        AND collection LIKE '%${collection}%'
+        GROUP BY C.collection;
+        `, (err, data) => {
+            if (err || data.length === 0) {
+            console.log(err);
+            res.json([]);
+            } else {
+            res.json(data);
+            }
+        });
+        }
+        else {
+            connection.query(`
+            SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
+            FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
+            WHERE C.coll_id IN (
+              SELECT Co.coll_id
+              FROM Collections Co
+              WHERE Co.original_title LIKE '%${original_title}%'
+            )
+            AND collection LIKE '%${collection}%'
+            AND G.genre IN ${genres}
+            GROUP BY C.collection;
+            `, (err, data) => {
+                if (err || data.length === 0) {
+                console.log(err);
+                res.json([]);
+                } else {
+                res.json(data);
+                }
+            });
+        }
+  }
+  else {
+    if (!genres) {
+        connection.query(`
+        SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
+        FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
+        WHERE C.coll_id IN (
+          SELECT Co.coll_id
+          FROM Collections Co
+          WHERE Co.original_title LIKE '%${original_title}%'
+        )
+        AND collection LIKE '%${collection}%'
+        AND K.keywords IN ${keywords}
+        GROUP BY Collection;
+        `, (err, data) => {
+            if (err || data.length === 0) {
+            console.log(err);
+            res.json([]);
+            } else {
+            res.json(data);
+            }
+        });
     }
     else {
-      if (!genres) {
-          connection.query(`
-          SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
-          FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-          WHERE C.coll_id IN (
-            SELECT Co.coll_id
-            FROM Collections Co
-            WHERE Co.original_title LIKE '%${original_title}%'
-          )
-          AND collection LIKE '%${collection}%'
-          AND K.keywords IN ${keywords}
-          GROUP BY Collection;
-          `, (err, data) => {
-              if (err || data.length === 0) {
-              console.log(err);
-              res.json([]);
-              } else {
-              res.json(data);
-              }
-          });
-      }
-      else {
-          connection.query(`
-          SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
-          FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-          WHERE C.coll_id IN (
-            SELECT Co.coll_id
-            FROM Collections Co
-            WHERE Co.original_title LIKE '%${original_title}%'
-          )
-          AND collection LIKE '%${collection}%'
-          AND G.genre IN ${genres}
-          AND K.keywords IN ${keywords}
-          GROUP BY Collection;
-          `, (err, data) => {
-              if (err || data.length === 0) {
-              console.log(err);
-              res.json([]);
-              } else {
-              res.json(data);
-              }
-          });
-      }
-      
+        connection.query(`
+        SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
+        FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
+        WHERE C.coll_id IN (
+          SELECT Co.coll_id
+          FROM Collections Co
+          WHERE Co.original_title LIKE '%${original_title}%'
+        )
+        AND collection LIKE '%${collection}%'
+        AND G.genre IN ${genres}
+        AND K.keywords IN ${keywords}
+        GROUP BY Collection;
+        `, (err, data) => {
+            if (err || data.length === 0) {
+            console.log(err);
+            res.json([]);
+            } else {
+            res.json(data);
+            }
+        });
     }
     
   }
+  
+}
 
-/************************
- * ADVANCED INFO ROUTES *
- ************************/
+
 
 // Route 7: GET /search_movies
 const search_movies = async function(req, res) {
@@ -458,8 +425,6 @@ const search_movies = async function(req, res) {
   const runtime_Low = req.query.runtime_Low ?? -1;
   const runtime_High = req.query.runtime_High ?? 1257;
 
-  //console.log("release_date_From: " + release_date_From);
-  //console.log("release_date_To: " + release_date_To);
   if (release_date_To === '' || !release_date_To) {
     connection.query(`
       SELECT DISTINCT title,runtime,popularity,overview,id,release_date
@@ -496,7 +461,6 @@ const search_movies = async function(req, res) {
 } 
 
 module.exports = {
-  author,
   random,
   movie,
   get_genres,
