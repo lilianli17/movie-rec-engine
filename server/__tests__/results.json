@@ -538,7 +538,7 @@
       "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
       "tagline": "A long time ago in a galaxy far, far away...",
       "popularity": 42.1497,
-      "release_date": "1977-05-25T04:00:00.000Z",
+      "release_date": "1977-05-25",
       "runtime": 121
     },
     "genres":[
@@ -561,17 +561,54 @@
               "keywords": "business man,composer,dog,english channel,funeral,geneva,hairdresser,isolation,judge,loss of husband,mannequin,pain,paris,poland,sexual frustration,shadowing,to compose,travel"
             }
           ],
-    "search_movies_filtered":{
-        "id": 2275,
-        "imdb_id": 144214,
-        "original_title": "The General's Daughter",
-        "original_language": "en",
-        "overview": "When the body of Army Capt. Elizabeth Campbell is ",
-        "popularity": 14.0397,
-        "release_date": "1999-06-18T00:00:00.000Z",
-        "runtime": 116,
-        "genre": "Crime"
-    },
+          "search_movies_filtered_title_genre":[
+            {"id": 245891,
+            "title": "John Wick",
+            "overview": "Ex-lunatic John Wick comes off his meds to track down the bounders that killed his dog and made off with his self-respect",
+            "popularity": 183.87,
+            "release_date": "2014-10-22T04:00:00.000Z",
+            "runtime": 101,
+            "genre": "Action"},
+            {"id": 324552,
+            "title":"John Wick: Chapter 2",
+            "overview": "John Wick is forced out of retirement by a former associate looking to seize control of a shadowy international assassins’ guild. Bound by a blood oath to aid him, Wick travels to Rome and does battle against some of the world’s most dangerous killers.",
+            "popularity": 49.2475,
+            "release_date": "2017-02-08T05:00:00.000Z",
+            "runtime": 122,
+            "genre": "Action"}
+          ],
+    
+          "search_movies_filtered_title":[
+            {"id": 489,
+            "title": "Good Will Hunting",
+            "overview": "Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
+            "popularity": 15.0648,
+            "release_date": "1997-12-05T05:00:00.000Z",
+            "runtime": 126,
+            "genre": "Drama"}
+          ],
+    
+          "search_movies_filtered_runtime":[
+            {"id": 202241,
+            "title": "Mildred Pierce",
+            "overview": "A newly divorced, uniquely independent woman struggles to carve out a new life for herself and her family in Depression-era California.",
+            "popularity": 3.01013,
+            "release_date": "2011-03-27T04:00:00.000Z",
+            "runtime": 336,
+            "genre": "Drama"}
+          ],
+    
+          "search_movies_filtered_empty1":[],
+    
+          "search_movies_filtered_releasedate":[
+            {"id": 92,
+            "title": "Megacities",
+            "overview": "Megacities is a documentary about the slums of five different metropolitan cities.",
+            "popularity": 0.406137,
+            "release_date": "1998-08-12T04:00:00.000Z",
+            "runtime": 94,
+            "genre": "Documentary"}
+          ],
     "top_movies":
         [
             {

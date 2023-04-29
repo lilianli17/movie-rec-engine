@@ -28,8 +28,6 @@ export default function GenresPage() {
         genre_list.push(String(generes[i].genre));
     }
 
-    
-
     const columns = [
         { field: 'id', headerName: 'Title', width: 300, renderCell: (params) => (
             <Link href={`http://${config.client_host}:${config.client_port}/movie/${params.value}`}>{params.row.title}</Link>
@@ -51,12 +49,12 @@ export default function GenresPage() {
 
     return (
         <Container>
-            <h2>Exploring your favorite genres!</h2>
+            <h1>Explore your favorite genres!</h1>
             <Grid 
             container 
-            spacing={6} 
+            spacing={3} 
             paddingTop={2}
-            paddingBottom={2}
+            paddingBottom={5}
             >
                 {genre_list.map((genre) => (
                     <Grid item xs={2.4} key={genre}>
@@ -79,7 +77,6 @@ export default function GenresPage() {
                     </Grid>
                 ))}
             </Grid>
-            <h2>Here are some movies you might like!</h2>
             <DataGrid
                 components={{
                     LoadingOverlay: CustomLoadingOverlay,

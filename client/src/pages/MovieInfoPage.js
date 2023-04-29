@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import config from "../config.json";
-import { Container, Stack, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tab, Box, Paper, Tabs } from "@mui/material";
+import { Container, Stack, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tab, Box, Paper, Tabs, Grid, Chip, IconButton } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import { useParams } from "react-router-dom";
+import LinkIcon from '@mui/icons-material/Link';
 
 export default function MovieInfoPage() {
     const movie_id = useParams().movie_id;
-
     const [movieInfo, setMovieInfo] = useState([{}]); // default should actually just be [], but empty object element added to avoid error in template code
     const [movieCast, setMovieCast] = useState([]);
     const [movieCrew, setMovieCrew] = useState([]);
@@ -52,25 +52,70 @@ export default function MovieInfoPage() {
         }
 
     }
-    const genre_update = genre_list.join(", ");
     const imdb_link = "https://www.imdb.com/title/tt" + imbd_id_update + "/";
+    const runtime_update = String(movieInfo.runtime) + " minutes";
+    console.log(movieInfo);
+ 
 
     return (
         <Container >
             <Stack direction='column'>
-            
-                <h1>{movieInfo.orignial_title}</h1>
-                <h3>Genres: {genre_update} </h3>
-                <h3>Tagline: {movieInfo.tagline}</h3>
-                <h3>Release Date: {date_update}</h3>
-                <h3>Runtime: {movieInfo.runtime} min</h3>
-                <h3>Overview: {movieInfo.overview}</h3>
-                <h3>Popularity: {movieInfo.popularity}</h3>
-                <h3>
-                    <Link href={imdb_link} underline="none">
-                    IMDb Link
-                    </Link>
-                </h3>
+                <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                >
+                    <h1>{movieInfo.original_title} &nbsp;</h1>
+                    {movieInfo.original_title !== movieInfo.title &&
+                        <h2>({movieInfo.title})</h2>
+                    }
+                    <a href={imdb_link}>
+                        <IconButton>
+                            <LinkIcon />
+                        </IconButton>
+                    </a>
+                </Grid>
+                <div>
+                    <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    > 
+                        {genre_list.map((g) => (
+                            <Grid item key={g}>
+                                <Chip 
+                                label={g} 
+                                color="primary"
+                                />
+                            </Grid>
+                        ))}
+                        <Grid item>
+                            <Chip 
+                            label={date_update} variant="outlined" 
+                            color="primary"
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Chip 
+                            label={runtime_update}
+                            variant="outlined" 
+                            color="primary"
+                            />
+                        </Grid>
+                    </Grid>
+                </div>
+                <p>
+                    {movieInfo.tagline !== null && 
+                    <div>
+                        <i>{movieInfo.tagline}</i>
+                        <br />
+                        <br />
+                    </div>
+                    }
+                    {movieInfo.overview}
+                </p>
             </Stack>
             <TabContext value={tabChange}>
                 <Box sx={{ width: '100%' }}>

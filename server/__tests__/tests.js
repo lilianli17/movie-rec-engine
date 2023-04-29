@@ -119,21 +119,60 @@ test('GET /get_similar_genres/100', async () => {
       });
   });
 
-test('GET /search_movies default', async () => {
-   await supertest(app).get('/search_movies')
-     //.expect(200)
+  test('GET /search_movies', async () => {
+    await supertest(app).get('/search_movies')
+      .expect(200)
+      .then((res) => {
+        expect(res.body.length).toEqual(50)
+        expect(res.body[0]).toStrictEqual({
+          id: expect.any(Number),
+          title: expect.any(String),
+          overview: expect.any(String),
+          popularity: expect.any(Number),
+          release_date: expect.any(String),
+          runtime: expect.any(Number),
+          genre: expect.any(String),
+        });
+      });
+ });
+ 
+ test('GET /search_movies filtered title', async () => {
+   await supertest(app).get('/search_movies/?title=Good Will Hunting')
+     .expect(200)
      .then((res) => {
-       expect(res.body.length).toEqual(89142)
-       expect(res.body[0]).toStrictEqual({
-         id: expect.any(Number),
-         imdb_id: expect.any(Number),
-         original_title: expect.any(String),
-         original_language: expect.any(String),
-         overview: expect.any(String),
-         popularity: expect.any(Number),
-         release_date: expect.any(String),
-         runtime: expect.any(Number),
-         genre: expect.any(String)
-       });
+       expect(res.body).toStrictEqual(results.search_movies_filtered_title)
      });
-});
+ });
+ 
+//  test('GET /search_movies filtered titleANDgenre', async () => {
+//    await supertest(app).get('/search_movies/?title=John Wick&genres=Action')
+//      .expect(200)
+//      .then((res) => {
+//        expect(res.body).toStrictEqual(results.search_movies_filtered_title_genre)
+//      });
+//  });
+ 
+ test('GET /search_movies filtered runtime', async () => {
+   await supertest(app).get('/search_movies/?runtime_Low=336&runtime_High=336')
+     .expect(200)
+     .then((res) => {
+       expect(res.body).toStrictEqual(results.search_movies_filtered_runtime)
+     });
+ });
+ 
+ test('GET /search_movies filtered empty', async () => {
+   await supertest(app).get('/search_movies/?runtime_Low=336&runtime_High=336&popularity=10')
+     .expect(200)
+     .then((res) => {
+       expect(res.body).toStrictEqual(results.search_movies_filtered_empty1)
+     });
+ });
+ 
+ test('GET /search_movies filtered releasedate', async () => {
+   await supertest(app).get('/search_movies/?release_date_From=1998-08-12&release_date_To=1998-08-12')
+     .expect(200)
+     .then((res) => {
+       expect(res.body).toStrictEqual(results.search_movies_filtered_releasedate)
+     });
+ });
+ 

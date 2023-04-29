@@ -1,11 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { indigo, amber } from '@mui/material/colors'
+import { cyan, teal, red, lime } from '@mui/material/colors'
 import { createTheme } from "@mui/material/styles";
 
 import NavBar from './components/NavBar';
 import MovieInfoPage from './pages/MovieInfoPage';
 import GenresPage from "./pages/GenresPage";
+import CollectionInfoPage from "./pages/CollectionInfoPage";
+import CollectionsPage from "./pages/CollectionsPage";
+import MoviesPage from "./pages/MoviesPage";
+import HomePage from "./pages/HomePage";
+import RecommendationsPage from "./pages/RecommendationsPage";
 
 // import HomePage from './pages/HomePage';
 // import AlbumsPage from './pages/AlbumsPage';
@@ -16,8 +21,12 @@ import GenresPage from "./pages/GenresPage";
 // in this case, we only change the color scheme
 export const theme = createTheme({
   palette: {
-    primary: indigo,
-    secondary: amber,
+    primary: {
+      main: teal[600],
+    },
+    secondary: {
+      main: lime[500],
+    },
   },
 });
 
@@ -32,9 +41,13 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          {/* <Route path="/" element =/> */}
+          <Route path="/" element={<HomePage />} />
           <Route path="/movie/:movie_id" element={<MovieInfoPage />} />
           <Route path="/genres" element={<GenresPage />} />
+          <Route path="/collections/:coll_id" element={<CollectionInfoPage />} />
+          <Route path="/collections/" element={<CollectionsPage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/rec" element={<RecommendationsPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
