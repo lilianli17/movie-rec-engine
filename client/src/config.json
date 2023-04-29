@@ -1,0 +1,6 @@
+{
+  "server_host": "localhost",
+  "server_port": "8080",
+  "client_host": "localhost",
+  "client_port": "3000"
+}
