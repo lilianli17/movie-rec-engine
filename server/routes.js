@@ -227,7 +227,6 @@ const top_popular = async function(req, res) {
     `, (err, data) => {
         if (err || data.length === 0 || !data) {
         console.log(err);
-        //console.log(id);
         res.json({});
         } else {
             res.json(data[0]);
@@ -494,7 +493,6 @@ const search_movies = async function(req, res) {
          }
         });
     }
-
 } 
 
 module.exports = {
