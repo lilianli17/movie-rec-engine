@@ -4,10 +4,11 @@ import config from "../config.json";
 import { Container, Stack, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tab, Box, Paper, Tabs } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
+import { useParams } from "react-router-dom";
 
 export default function MovieInfoPage() {
-    // **change it later
-    const movie_id = 11;
+    const movie_id = useParams().movie_id;
+
     const [movieInfo, setMovieInfo] = useState([{}]); // default should actually just be [], but empty object element added to avoid error in template code
     const [movieCast, setMovieCast] = useState([]);
     const [movieCrew, setMovieCrew] = useState([]);

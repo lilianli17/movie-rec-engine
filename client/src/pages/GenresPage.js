@@ -1,7 +1,7 @@
 import { Container, Grid, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { GridOverlay, DataGrid } from '@mui/x-data-grid';
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, Link } from '@mui/material';
 
 
 const config = require('../config.json');
@@ -31,11 +31,15 @@ export default function GenresPage() {
     
 
     const columns = [
-        { field: 'title', headerName: 'Title', width: 300},
-        { field: 'language', headerName: 'Language'},
-        { field: 'tagline', headerName: 'Tagline', width: 400},
-        { field: 'popularity', headerName: 'Popularity'},
-        { field: 'release_date', headerName: 'Release Date', width: 110},
+        { field: 'id', headerName: 'Title', width: 300, renderCell: (params) => (
+            <Link href={`http://${config.client_host}:${config.client_port}/movie/${params.value}`}>{params.row.title}</Link>
+        )},
+        { field: 'language', headerName: 'Language', width: 100},
+        { field: 'tagline', headerName: 'Tagline', width: 380},
+        { field: 'popularity', headerName: 'Popularity', width: 100},
+        { field: 'release_date', headerName: 'Release Date', width: 135, renderCell: (params) => (
+            <div>{String(params.value).substring(0, 10)}</div>
+        )},
         { field: 'runtime', headerName: 'Runtime (min)', width: 140},
     ]
 
