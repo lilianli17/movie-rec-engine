@@ -94,9 +94,6 @@ export default function GenresPage() {
         </Container>
     )
 
-    
-
-
 }
 
 function CustomLoadingOverlay() {

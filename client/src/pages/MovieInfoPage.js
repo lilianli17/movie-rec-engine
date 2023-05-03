@@ -9,7 +9,7 @@ import LinkIcon from '@mui/icons-material/Link';
 
 export default function MovieInfoPage() {
     const movie_id = useParams().movie_id;
-    const [movieInfo, setMovieInfo] = useState([{}]); // default should actually just be [], but empty object element added to avoid error in template code
+    const [movieInfo, setMovieInfo] = useState([{}]);
     const [movieCast, setMovieCast] = useState([]);
     const [movieCrew, setMovieCrew] = useState([]);
     const [tabChange, setTabChange] = React.useState('1');
