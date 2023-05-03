@@ -82,7 +82,7 @@ const get_movies_by_genres = async function(req, res) {
   connection.query(`
       SELECT DISTINCT M.title, M.original_language AS language, M.tagline, M.popularity, M.release_date, M.runtime, M.id
       FROM (SELECT * FROM Genres WHERE genre IN (${genre})) G
-      JOIN Movies M on M.original_title = G.original_title
+      JOIN Movies M on M.id = G.id
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -93,7 +93,7 @@ const get_movies_by_genres = async function(req, res) {
   });
 }
 
-// Route 6: GET /crew/:movie_id get crew by movie id
+// Route 6: GET /search_crew/:id get crew by movie id
 const search_crew = async function(req, res) {
   if (req.params.movie_id === undefined) {
     res.status(400).send(`movie is not specified`);
@@ -177,7 +177,7 @@ const get_movies_collection = async function(req, res) {
   connection.query(`
     SELECT M.id, M.original_title, M.overview, M.popularity, M.runtime, C.collection
     FROM Collections C LEFT JOIN Movies M ON C.id = M.id
-    WHERE C.coll_id = '${req.params.coll_id}'
+    WHERE C.coll_id = ${req.params.coll_id}
   `, (err, data) => {
     if (err || data.length === 0) {
       console.log(err);
@@ -193,7 +193,7 @@ const get_collection = async function(req, res) {
   connection.query(`
   SELECT C.collection, GROUP_CONCAT(DISTINCT C.original_title) AS movies, GROUP_CONCAT(DISTINCT G.genre) AS genres, GROUP_CONCAT(DISTINCT K.keywords) AS keywords
   FROM Collections C LEFT JOIN Genres G ON C.id = G.id LEFT JOIN Keywords K ON C.id = K.id
-  WHERE C.coll_id = '${req.params.coll_id}';
+  WHERE C.coll_id = ${req.params.coll_id};
   `, (err, data) => {
       if (err || data.length === 0 || !data) {
       console.log(err);
@@ -221,10 +221,9 @@ const get_similar = async function(req, res) {
   `, (err, data) => {
     if (err || data.length === 0 || !data) {
       console.log(err);
-      console.log(id);
       res.json([]);
     } else {
-        console.log(data)
+        console.log(data);
         res.json(data);
     }
   });
@@ -266,9 +265,29 @@ const get_similar_cast = async function(req, res) {
   `, (err, data) => {
     if (err || data.length === 0 || !data) {
       console.log(err);
+      res.json([]);
+    } else {
+        console.log(data);
+        res.json(data);
+    }
+  });
+
+}
+
+const get_ml = async function(req, res) {
+  connection.query(`
+  SELECT d.id AS id, d.original_title AS original_title, l.similarity AS similarity_score
+    FROM ML l INNER JOIN df_train d ON l.movie2 = d.id INNER JOIN df_train d2 ON l.movie1 = d2.id
+    WHERE l.movie1 <> l.movie2 AND d2.original_title = '${req.params.original_title}'
+    GROUP BY d.id, d.original_title, l.similarity
+    ORDER BY l.similarity DESC;
+  `, (err, data) => {
+    if (err || data.length === 0 || !data) {
+      console.log(err);
       //console.log(id);
       res.json([]);
     } else {
+        console.log(data);
         res.json(data);
     }
   });
@@ -276,26 +295,26 @@ const get_similar_cast = async function(req, res) {
 }
 
 const get_similar_crew = async function(req, res) {
-  connection.query(`
-  SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
-  FROM Movies m1
-  JOIN Crew cr1 ON m1.id = cr1.id
-  JOIN Movies m2 ON m2.id <> m1.id
-  JOIN Crew cr2 ON m2.id = cr2.id AND cr1.name = cr2.name
-  WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
-  GROUP BY m2.original_title
-  ORDER BY similarity_score DESC;
-  `, (err, data) => {
-    if (err || data.length === 0 || !data) {
-      console.log(err);
-      //console.log(id);
-      res.json([]);
-    } else {
-        res.json(data);
-    }
-  });
-
-}
+    connection.query(`
+    SELECT m2.id, m2.original_title, COUNT(*) AS similarity_score
+    FROM Movies m1
+    JOIN Crew cr1 ON m1.id = cr1.id
+    JOIN Movies m2 ON m2.id <> m1.id
+    JOIN Crew cr2 ON m2.id = cr2.id AND cr1.name = cr2.name
+    WHERE m1.original_title = '${req.params.original_title}' AND m2.id <> m1.id
+    GROUP BY m2.original_title
+    ORDER BY similarity_score DESC;
+    `, (err, data) => {
+      if (err || data.length === 0 || !data) {
+        console.log(err);
+        //console.log(id);
+        res.json([]);
+      } else {
+          res.json(data);
+      }
+    });
+  
+  }
 
 const search_collections = async function(req, res) {
   const original_title = req.query.original_title ?? '';
@@ -477,5 +496,6 @@ module.exports = {
   get_movies_collection,
   top_popular,
   top_popular_genre,
-  get_collection
+  get_collection,
+  get_ml
 }

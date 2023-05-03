@@ -1,6 +1,16 @@
 {
   "crew": [
     {
+      "name": "Dianne Crittenden",
+      "job": "Casting",
+      "department": "Production"
+    },
+    {
+      "name": "Gary Kurtz",
+      "job": "Producer",
+      "department": "Production"
+    },
+    {
       "name": "George Lucas",
       "job": "Director",
       "department": "Directing"
@@ -16,29 +26,9 @@
       "department": "Writing"
     },
     {
-      "name": "Gary Kurtz",
-      "job": "Producer",
-      "department": "Production"
-    },
-    {
-      "name": "Rick McCallum",
-      "job": "Producer",
-      "department": "Production"
-    },
-    {
-      "name": "John Williams",
-      "job": "Original Music Composer",
-      "department": "Sound"
-    },
-    {
       "name": "Gilbert Taylor",
       "job": "Director of Photography",
       "department": "Camera"
-    },
-    {
-      "name": "Vic Ramos",
-      "job": "Casting",
-      "department": "Production"
     },
     {
       "name": "Irene Lamb",
@@ -46,7 +36,22 @@
       "department": "Production"
     },
     {
-      "name": "Norman Reynolds",
+      "name": "John Barry",
+      "job": "Production Design",
+      "department": "Art"
+    },
+    {
+      "name": "John Mollo",
+      "job": "Costume Design",
+      "department": "Costume & Make-Up"
+    },
+    {
+      "name": "John Williams",
+      "job": "Original Music Composer",
+      "department": "Sound"
+    },
+    {
+      "name": "Leslie Dilley",
       "job": "Art Direction",
       "department": "Art"
     },
@@ -56,24 +61,19 @@
       "department": "Editing"
     },
     {
-      "name": "Dianne Crittenden",
-      "job": "Casting",
-      "department": "Production"
-    },
-    {
-      "name": "Roger Christian",
-      "job": "Set Decoration",
-      "department": "Art"
-    },
-    {
-      "name": "Leslie Dilley",
+      "name": "Norman Reynolds",
       "job": "Art Direction",
       "department": "Art"
     },
     {
-      "name": "John Mollo",
-      "job": "Costume Design",
-      "department": "Costume & Make-Up"
+      "name": "Paul Hirsch",
+      "job": "Editor",
+      "department": "Editing"
+    },
+    {
+      "name": "Paul Huston",
+      "job": "Visual Effects",
+      "department": "Visual Effects"
     },
     {
       "name": "Phil Tippett",
@@ -86,177 +86,69 @@
       "department": "Editing"
     },
     {
-      "name": "Paul Hirsch",
-      "job": "Editor",
-      "department": "Editing"
+      "name": "Rick McCallum",
+      "job": "Producer",
+      "department": "Production"
     },
     {
-      "name": "John Barry",
-      "job": "Production Design",
+      "name": "Roger Christian",
+      "job": "Set Decoration",
       "department": "Art"
     },
     {
-      "name": "Paul Huston",
-      "job": "Visual Effects",
-      "department": "Visual Effects"
+      "name": "Vic Ramos",
+      "job": "Casting",
+      "department": "Production"
     }
   ],
   "cast": 
   [
     {
-      "name": "Mark Hamill",
-      "character": "Luke Skywalker"
+      "name": "Al Lampert",
+      "character": "Daine Jir (uncredited)"
     },
     {
-      "name": "Harrison Ford",
-      "character": "Han Solo"
-    },
-    {
-      "name": "Carrie Fisher",
-      "character": "Princess Leia Organa"
-    },
-    {
-      "name": "Peter Cushing",
-      "character": "Grand Moff Tarkin"
+      "name": "Alan Harris",
+      "character": "Leia's Rebel Escort (uncredited)"
     },
     {
       "name": "Alec Guinness",
       "character": "Obi-Wan \"Ben\" Kenobi"
     },
     {
-      "name": "Anthony Daniels",
-      "character": "See Threepio (C-3PO)"
-    },
-    {
-      "name": "Kenny Baker",
-      "character": "Artoo-Detoo (R2-D2)"
-    },
-    {
-      "name": "Peter Mayhew",
-      "character": "Chewbacca"
-    },
-    {
-      "name": "David Prowse",
-      "character": "Darth Vader"
-    },
-    {
-      "name": "James Earl Jones",
-      "character": "Voice of Darth Vader (voice)"
-    },
-    {
-      "name": "Phil Brown",
-      "character": "Uncle Owen"
-    },
-    {
-      "name": "Shelagh Fraser",
-      "character": "Aunt Beru"
-    },
-    {
-      "name": "Jack Purvis",
-      "character": "Chief Jawa"
-    },
-    {
-      "name": "Eddie Byrne",
-      "character": "General Willard"
-    },
-    {
-      "name": "Denis Lawson",
-      "character": "Red Two (Wedge)"
-    },
-    {
-      "name": "Garrick Hagon",
-      "character": "Red Three (Biggs)"
-    },
-    {
-      "name": "Don Henderson",
-      "character": "General Taggi"
-    },
-    {
-      "name": "Leslie Schofield",
-      "character": "Commander #1"
-    },
-    {
-      "name": "Richard LeParmentier",
-      "character": "General Motti"
-    },
-    {
-      "name": "Michael Leader",
-      "character": "Stormtrooper"
-    },
-    {
       "name": "Alex McCrindle",
       "character": "General Dodonna"
     },
     {
-      "name": "Drewe Henley",
-      "character": "Red Leader"
+      "name": "Alf Mangan",
+      "character": "Takeel (uncredited)"
     },
     {
-      "name": "Jack Klaff",
-      "character": "Red Four (John \"D\")"
+      "name": "Alfie Curtis",
+      "character": "Dr. Evazan (uncredited)"
     },
     {
-      "name": "William Hootkins",
-      "character": "Red Six (Porkins)"
+      "name": "Angela Staines",
+      "character": "Senni Tonnika (uncredited)"
     },
     {
       "name": "Angus MacInnes",
       "character": "Gold Leader"
     },
     {
-      "name": "Jeremy Sinden",
-      "character": "Gold Two"
+      "name": "Annette Jones",
+      "character": "Mosep (uncredited)"
     },
     {
-      "name": "Graham Ashley",
-      "character": "Gold Five"
+      "name": "Anthony Daniels",
+      "character": "See Threepio (C-3PO)"
     },
     {
-      "name": "David Ankrum",
-      "character": "Red Two (voice) (uncredited)"
+      "name": "Anthony Lang",
+      "character": "BoShek (uncredited)"
     },
     {
-      "name": "Mark Austin",
-      "character": "Boba Fett (special edition) (uncredited)"
-    },
-    {
-      "name": "Scott Beach",
-      "character": "Stormtrooper (voice) (uncredited)"
-    },
-    {
-      "name": "Lightning Bear",
-      "character": "Stormtrooper (uncredited)"
-    },
-    {
-      "name": "Jon Berg",
-      "character": "Cantina Alien (uncredited)"
-    },
-    {
-      "name": "Doug Beswick",
-      "character": "Cantina Alien (uncredited)"
-    },
-    {
-      "name": "Paul Blake",
-      "character": "Greedo (uncredited)"
-    },
-    {
-      "name": "Janice Burchette",
-      "character": "Nabrun Leids (uncredited)"
-    },
-    {
-      "name": "Ted Burnett",
-      "character": "Wuher (uncredited)"
-    },
-    {
-      "name": "John Chapman",
-      "character": "Drifter (Red 12) (uncredited)"
-    },
-    {
-      "name": "Gilda Cohen",
-      "character": "Cantina Patron (uncredited)"
-    },
-    {
-      "name": "Tim Condren",
+      "name": "Arthur Howell",
       "character": "Stormtrooper (uncredited)"
     },
     {
@@ -264,200 +156,272 @@
       "character": "Wioslea (uncredited)"
     },
     {
-      "name": "Alfie Curtis",
-      "character": "Dr. Evazan (uncredited)"
-    },
-    {
-      "name": "Robert Davies",
-      "character": "Cantina Patron (uncredited)"
-    },
-    {
-      "name": "Maria De Aragon",
-      "character": "Greedo (uncredited)"
-    },
-    {
-      "name": "Robert A. Denham",
-      "character": "Hrchek Kal Fas (uncredited)"
-    },
-    {
-      "name": "Frazer Diamond",
-      "character": "Jawa (uncredited)"
-    },
-    {
-      "name": "Peter Diamond",
-      "character": "Stormtrooper / Tusken Raider / Death Star Trooper "
-    },
-    {
-      "name": "Warwick Diamond",
-      "character": "Jawa (uncredited)"
-    },
-    {
-      "name": "Sadie Eden",
-      "character": "Garindan (uncredited)"
-    },
-    {
-      "name": "Kim Falkinburg",
-      "character": "Djas Puhr (uncredited)"
-    },
-    {
-      "name": "Harry Fielder",
-      "character": "Death Star Trooper (uncredited)"
-    },
-    {
-      "name": "Ted Gagliano",
-      "character": "Stormtrooper with Binoculars (uncredited)"
-    },
-    {
-      "name": "Salo Gardner",
-      "character": "Cantina Patron (uncredited)"
-    },
-    {
-      "name": "Steve Gawley",
-      "character": "Death Star Trooper (uncredited)"
-    },
-    {
       "name": "Barry Gnome",
       "character": "Kabe (uncredited)"
     },
     {
-      "name": "Rusty Goffe",
-      "character": "Kabe / Jawa / GONK Droid (uncredited)"
-    },
-    {
-      "name": "Isaac Grand",
-      "character": "Cantina Patron (uncredited)"
-    },
-    {
-      "name": "Nelson Hall",
-      "character": "Stormtrooper (special edition) (uncredited)"
-    },
-    {
-      "name": "Reg Harding",
+      "name": "Bill Weston",
       "character": "Stormtrooper (uncredited)"
     },
     {
-      "name": "Alan Harris",
-      "character": "Leia's Rebel Escort (uncredited)"
+      "name": "Burnell Tucker",
+      "character": "Del Goren (uncredited)"
     },
     {
-      "name": "Frank Henson",
-      "character": "Stormtrooper (uncredited)"
+      "name": "Carrie Fisher",
+      "character": "Princess Leia Organa"
     },
     {
       "name": "Christine Hewett",
       "character": "Brea Tonnika (uncredited)"
     },
     {
-      "name": "Arthur Howell",
-      "character": "Stormtrooper (uncredited)"
-    },
-    {
-      "name": "Tommy Ilsley",
-      "character": "Ponda Baba (uncredited)"
-    },
-    {
-      "name": "Joe Johnston",
-      "character": "Death Star Trooper (uncredited)"
-    },
-    {
-      "name": "Annette Jones",
-      "character": "Mosep (uncredited)"
-    },
-    {
-      "name": "Linda Jones",
-      "character": "Chall Bekan (uncredited)"
-    },
-    {
-      "name": "Joe Kaye",
-      "character": "Solomohal (uncredited)"
+      "name": "Colin Higgins",
+      "character": "Rebel Pilot (uncredited)"
     },
     {
       "name": "Colin Michael Kitchens",
       "character": "Stormtrooper (voice) (uncredited)"
     },
     {
-      "name": "Melissa Kurtz",
-      "character": "Jawa (uncredited)"
+      "name": "David Ankrum",
+      "character": "Red Two (voice) (uncredited)"
     },
     {
-      "name": "Tiffany L. Kurtz",
-      "character": "Jawa (uncredited)"
+      "name": "David Prowse",
+      "character": "Darth Vader"
     },
     {
-      "name": "Al Lampert",
-      "character": "Daine Jir (uncredited)"
-    },
-    {
-      "name": "Anthony Lang",
-      "character": "BoShek (uncredited)"
-    },
-    {
-      "name": "Laine Liska",
-      "character": "Muftak / Cantina Band Member (uncredited)"
+      "name": "Denis Lawson",
+      "character": "Red Two (Wedge)"
     },
     {
       "name": "Derek Lyons",
       "character": "Temple Guard / Medal Bearer (uncredited)"
     },
     {
-      "name": "Mahjoub",
-      "character": "Jawa (uncredited)"
+      "name": "Diana Sadley Way",
+      "character": "Thuku (uncredited)"
     },
     {
-      "name": "Alf Mangan",
-      "character": "Takeel (uncredited)"
+      "name": "Don Henderson",
+      "character": "General Taggi"
     },
     {
-      "name": "Rick McCallum",
-      "character": "Stormtrooper (special edition) (uncredited)"
+      "name": "Doug Beswick",
+      "character": "Cantina Alien (uncredited)"
     },
     {
-      "name": "Grant McCune",
-      "character": "Death Star Gunner (uncredited)"
+      "name": "Drewe Henley",
+      "character": "Red Leader"
     },
     {
-      "name": "Geoffrey Moon",
-      "character": "Cantina Patron (uncredited)"
-    },
-    {
-      "name": "Mandy Morton",
-      "character": "Swilla Corey (uncredited)"
-    },
-    {
-      "name": "Lorne Peterson",
-      "character": "Massassi Base Rebel Scout (uncredited)"
-    },
-    {
-      "name": "Marcus Powell",
-      "character": "Rycar Ryjerd (uncredited)"
-    },
-    {
-      "name": "Shane Rimmer",
-      "character": "InCom Engineer (uncredited)"
-    },
-    {
-      "name": "Pam Rose",
-      "character": "Leesub Sirln (uncredited)"
-    },
-    {
-      "name": "George Roubicek",
-      "character": "Cmdr. Praji (Imperial Officer #2 on rebel ship) (u"
+      "name": "Eddie Byrne",
+      "character": "General Willard"
     },
     {
       "name": "Erica Simmons",
       "character": "Tawss Khaa (uncredited)"
     },
     {
-      "name": "Angela Staines",
-      "character": "Senni Tonnika (uncredited)"
+      "name": "Frank Henson",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Frazer Diamond",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Fred Wood",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Garrick Hagon",
+      "character": "Red Three (Biggs)"
+    },
+    {
+      "name": "Geoffrey Moon",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "George Roubicek",
+      "character": "Cmdr. Praji (Imperial Officer #2 on rebel ship) (u"
     },
     {
       "name": "George Stock",
       "character": "Cantina Patron (uncredited)"
     },
     {
-      "name": "Roy Straite",
+      "name": "Gilda Cohen",
       "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Graham Ashley",
+      "character": "Gold Five"
+    },
+    {
+      "name": "Grant McCune",
+      "character": "Death Star Gunner (uncredited)"
+    },
+    {
+      "name": "Hal Wamsley",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Harold Weed",
+      "character": "Ketwol / Melas (uncredited)"
+    },
+    {
+      "name": "Harrison Ford",
+      "character": "Han Solo"
+    },
+    {
+      "name": "Harry Fielder",
+      "character": "Death Star Trooper (uncredited)"
+    },
+    {
+      "name": "Isaac Grand",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Jack Klaff",
+      "character": "Red Four (John \"D\")"
+    },
+    {
+      "name": "Jack Purvis",
+      "character": "Chief Jawa"
+    },
+    {
+      "name": "James Earl Jones",
+      "character": "Voice of Darth Vader (voice)"
+    },
+    {
+      "name": "Janice Burchette",
+      "character": "Nabrun Leids (uncredited)"
+    },
+    {
+      "name": "Jeremy Sinden",
+      "character": "Gold Two"
+    },
+    {
+      "name": "Jerry Walter",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Joe Johnston",
+      "character": "Death Star Trooper (uncredited)"
+    },
+    {
+      "name": "Joe Kaye",
+      "character": "Solomohal (uncredited)"
+    },
+    {
+      "name": "John Chapman",
+      "character": "Drifter (Red 12) (uncredited)"
+    },
+    {
+      "name": "John Sylla",
+      "character": "Cantina Voices (voice) (uncredited)"
+    },
+    {
+      "name": "Jon Berg",
+      "character": "Cantina Alien (uncredited)"
+    },
+    {
+      "name": "Kenny Baker",
+      "character": "Artoo-Detoo (R2-D2)"
+    },
+    {
+      "name": "Kim Falkinburg",
+      "character": "Djas Puhr (uncredited)"
+    },
+    {
+      "name": "Laine Liska",
+      "character": "Muftak / Cantina Band Member (uncredited)"
+    },
+    {
+      "name": "Larry Ward",
+      "character": "Greedo (voice) (uncredited)"
+    },
+    {
+      "name": "Leslie Schofield",
+      "character": "Commander #1"
+    },
+    {
+      "name": "Lightning Bear",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Linda Jones",
+      "character": "Chall Bekan (uncredited)"
+    },
+    {
+      "name": "Lorne Peterson",
+      "character": "Massassi Base Rebel Scout (uncredited)"
+    },
+    {
+      "name": "Mahjoub",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Malcolm Tierney",
+      "character": "Lt. Shann Childsen (uncredited)"
+    },
+    {
+      "name": "Mandy Morton",
+      "character": "Swilla Corey (uncredited)"
+    },
+    {
+      "name": "Marcus Powell",
+      "character": "Rycar Ryjerd (uncredited)"
+    },
+    {
+      "name": "Maria De Aragon",
+      "character": "Greedo (uncredited)"
+    },
+    {
+      "name": "Mark Austin",
+      "character": "Boba Fett (special edition) (uncredited)"
+    },
+    {
+      "name": "Mark Hamill",
+      "character": "Luke Skywalker"
+    },
+    {
+      "name": "Melissa Kurtz",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Michael Leader",
+      "character": "Stormtrooper"
+    },
+    {
+      "name": "Morgan Upton",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Nelson Hall",
+      "character": "Stormtrooper (special edition) (uncredited)"
+    },
+    {
+      "name": "Pam Rose",
+      "character": "Leesub Sirln (uncredited)"
+    },
+    {
+      "name": "Paul Blake",
+      "character": "Greedo (uncredited)"
+    },
+    {
+      "name": "Peter Cushing",
+      "character": "Grand Moff Tarkin"
+    },
+    {
+      "name": "Peter Diamond",
+      "character": "Stormtrooper / Tusken Raider / Death Star Trooper "
+    },
+    {
+      "name": "Peter Mayhew",
+      "character": "Chewbacca"
     },
     {
       "name": "Peter Sturgeon",
@@ -468,64 +432,100 @@
       "character": "Lt. Pol Treidum (uncredited)"
     },
     {
-      "name": "John Sylla",
-      "character": "Cantina Voices (voice) (uncredited)"
-    },
-    {
-      "name": "Tom Sylla",
-      "character": "Massassi Outpost Announcer / Various Voices (voice"
-    },
-    {
-      "name": "Malcolm Tierney",
-      "character": "Lt. Shann Childsen (uncredited)"
+      "name": "Phil Brown",
+      "character": "Uncle Owen"
     },
     {
       "name": "Phil Tippett",
       "character": "Cantina Alien (uncredited)"
     },
     {
-      "name": "Burnell Tucker",
-      "character": "Del Goren (uncredited)"
-    },
-    {
-      "name": "Morgan Upton",
-      "character": "Stormtrooper (voice) (uncredited)"
-    },
-    {
-      "name": "Jerry Walter",
-      "character": "Stormtrooper (voice) (uncredited)"
-    },
-    {
-      "name": "Hal Wamsley",
-      "character": "Jawa (uncredited)"
-    },
-    {
-      "name": "Larry Ward",
-      "character": "Greedo (voice) (uncredited)"
-    },
-    {
-      "name": "Diana Sadley Way",
-      "character": "Thuku (uncredited)"
-    },
-    {
-      "name": "Harold Weed",
-      "character": "Ketwol / Melas (uncredited)"
-    },
-    {
-      "name": "Bill Weston",
+      "name": "Reg Harding",
       "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Richard LeParmentier",
+      "character": "General Motti"
+    },
+    {
+      "name": "Rick McCallum",
+      "character": "Stormtrooper (special edition) (uncredited)"
+    },
+    {
+      "name": "Robert A. Denham",
+      "character": "Hrchek Kal Fas (uncredited)"
+    },
+    {
+      "name": "Robert Davies",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Roy Straite",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Rusty Goffe",
+      "character": "Kabe / Jawa / GONK Droid (uncredited)"
+    },
+    {
+      "name": "Sadie Eden",
+      "character": "Garindan (uncredited)"
+    },
+    {
+      "name": "Salo Gardner",
+      "character": "Cantina Patron (uncredited)"
+    },
+    {
+      "name": "Scott Beach",
+      "character": "Stormtrooper (voice) (uncredited)"
+    },
+    {
+      "name": "Shane Rimmer",
+      "character": "InCom Engineer (uncredited)"
+    },
+    {
+      "name": "Shelagh Fraser",
+      "character": "Aunt Beru"
     },
     {
       "name": "Steve 'Spaz' Williams",
       "character": "Mos Eisley Citizen (special edition) (uncredited)"
     },
     {
-      "name": "Fred Wood",
-      "character": "Cantina Patron (uncredited)"
+      "name": "Steve Gawley",
+      "character": "Death Star Trooper (uncredited)"
     },
     {
-      "name": "Colin Higgins",
-      "character": "Rebel Pilot (uncredited)"
+      "name": "Ted Burnett",
+      "character": "Wuher (uncredited)"
+    },
+    {
+      "name": "Ted Gagliano",
+      "character": "Stormtrooper with Binoculars (uncredited)"
+    },
+    {
+      "name": "Tiffany L. Kurtz",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "Tim Condren",
+      "character": "Stormtrooper (uncredited)"
+    },
+    {
+      "name": "Tom Sylla",
+      "character": "Massassi Outpost Announcer / Various Voices (voice"
+    },
+    {
+      "name": "Tommy Ilsley",
+      "character": "Ponda Baba (uncredited)"
+    },
+    {
+      "name": "Warwick Diamond",
+      "character": "Jawa (uncredited)"
+    },
+    {
+      "name": "William Hootkins",
+      "character": "Red Six (Porkins)"
     }
   ],
   "movie": 
@@ -617,6 +617,7 @@
     "search_collections":
         [
             {
+                "coll_id": 1499,
               "collection": "Three Colors Collection",
               "movies": "Trois couleurs : Blanc,Trois couleurs : Bleu,Trois couleurs : Rouge",
               "genres": "Comedy,Drama,Music,Mystery,Romance",
@@ -629,15 +630,13 @@
             "overview": "Ex-lunatic John Wick comes off his meds to track down the bounders that killed his dog and made off with his self-respect",
             "popularity": 183.87,
             "release_date": "2014-10-22T04:00:00.000Z",
-            "runtime": 101,
-            "genre": "Action"},
+            "runtime": 101},
             {"id": 324552,
             "title":"John Wick: Chapter 2",
             "overview": "John Wick is forced out of retirement by a former associate looking to seize control of a shadowy international assassins’ guild. Bound by a blood oath to aid him, Wick travels to Rome and does battle against some of the world’s most dangerous killers.",
             "popularity": 49.2475,
             "release_date": "2017-02-08T05:00:00.000Z",
-            "runtime": 122,
-            "genre": "Action"}
+            "runtime": 122}
           ],
     
           "search_movies_filtered_title":[
@@ -646,8 +645,7 @@
             "overview": "Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
             "popularity": 15.0648,
             "release_date": "1997-12-05T05:00:00.000Z",
-            "runtime": 126,
-            "genre": "Drama"}
+            "runtime": 126}
           ],
     
           "search_movies_filtered_runtime":[
@@ -656,8 +654,7 @@
             "overview": "A newly divorced, uniquely independent woman struggles to carve out a new life for herself and her family in Depression-era California.",
             "popularity": 3.01013,
             "release_date": "2011-03-27T04:00:00.000Z",
-            "runtime": 336,
-            "genre": "Drama"}
+            "runtime": 336}
           ],
     
           "search_movies_filtered_empty1":[],
@@ -668,52 +665,20 @@
             "overview": "Megacities is a documentary about the slums of five different metropolitan cities.",
             "popularity": 0.406137,
             "release_date": "1998-08-12T04:00:00.000Z",
-            "runtime": 94,
-            "genre": "Documentary"}
+            "runtime": 94}
           ],
-    "top_movies":
-        [
+    "get_similar":
+        {
+          "id": 240,
+          "original_title": "The Godfather: Part II",
+          "similarity_score": 966
+        },
+        "get_similar_genre": 
             {
-              "original_title": "The Godfather: Part II",
-              "similarity_score": 966
-            },
-            {
-              "original_title": "The Godfather: Part III",
-              "similarity_score": 216
-            },
-            {
-              "original_title": "The Conversation",
-              "similarity_score": 32
-            },
-            {
-              "original_title": "Apocalypse Now",
-              "similarity_score": 26
-            },
-            {
-              "original_title": "Rumble Fish",
-              "similarity_score": 12
-            },
-            {
-              "original_title": "Dog Day Afternoon",
-              "similarity_score": 12
-            },
-            {
-              "original_title": "The Cotton Club",
+              "id": 4412,
+              "original_title": "Les Misérables",
               "similarity_score": 10
             },
-            {
-              "original_title": "The Outsiders",
-              "similarity_score": 10
-            },
-            {
-              "original_title": "The Rain People",
-              "similarity_score": 8
-            },
-            {
-              "original_title": "One from the Heart",
-              "similarity_score": 7
-            }
-          ],
           "top_movies_genres":[
             {
               "original_title": "The Chase",
@@ -756,90 +721,19 @@
               "similarity_score": 4
             }
           ],
-          "similar_crew":[
+          "similar_crew":
             {
-              "original_title": "MEMORIES",
-              "similarity_score": 5
-            },
-            {
-              "original_title": "アキラ",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "Robotto kânibaru",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "東京ゴッドファーザーズ",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "蟲師",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Beyond",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "千年女優",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "パプリカ",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "The Animatrix",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Steamboy",
-              "similarity_score": 2
+              "id": 240,
+              "original_title": "The Godfather: Part II",
+              "similarity_score": 23
             }
-          ],
-          "similar_cast":[
+          ,
+          "similar_cast":
             {
-              "original_title": "Gamle mænd i nye biler",
-              "similarity_score": 5
+              "id": 240,
+              "original_title": "The Godfather: Part II",
+              "similarity_score": 21
             },
-            {
-              "original_title": "Den Skaldede Frisør",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "De grønne slagtere",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "Hævnen",
-              "similarity_score": 3
-            },
-            {
-              "original_title": "Festen",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Et rigtigt menneske",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Italiensk for begyndere",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Adams æbler",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Blinkende lygter",
-              "similarity_score": 2
-            },
-            {
-              "original_title": "Pusher",
-              "similarity_score": 2
-            }
-          ],
           "get_movie_collection": [
             {
               "original_title": "Kill Bill: Vol. 1",
@@ -854,9 +748,11 @@
             {
               "id": 211672,
               "imdb_id": 2293640,
+              "title": "Minions",
               "original_title": "Minions",
               "original_language": "en",
-              "overview": "Minions Stuart, Kevin and Bob are recruited by Sca",
+              "overview": "Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.",
+              "tagline": "Before Gru, they had a history of bad bosses",
               "popularity": 547.488,
               "release_date": "2015-06-17T04:00:00.000Z",
               "runtime": 91
@@ -864,9 +760,11 @@
             {
               "id": 297762,
               "imdb_id": 451279,
+              "title": "Wonder Woman",
               "original_title": "Wonder Woman",
               "original_language": "en",
-              "overview": "An Amazon princess comes to the world of Man to be",
+              "overview": "An Amazon princess comes to the world of Man to become the greatest of the female superheroes.",
+              "tagline": "Power. Grace. Wisdom. Wonder.",
               "popularity": 294.337,
               "release_date": "2017-05-30T04:00:00.000Z",
               "runtime": 141
@@ -874,9 +772,11 @@
             {
               "id": 321612,
               "imdb_id": 2771200,
+              "title": "Beauty and the Beast",
               "original_title": "Beauty and the Beast",
               "original_language": "en",
-              "overview": "A live-action adaptation of Disney's version of th",
+              "overview": "A live-action adaptation of Disney's version of the classic 'Beauty and the Beast' tale of a cursed prince and a beautiful young woman who helps him break the spell.",
+              "tagline": "Be our guest.",
               "popularity": 287.254,
               "release_date": "2017-03-16T04:00:00.000Z",
               "runtime": 129
@@ -884,9 +784,11 @@
             {
               "id": 339403,
               "imdb_id": 3890160,
+              "title": "Baby Driver",
               "original_title": "Baby Driver",
               "original_language": "en",
-              "overview": "After being coerced into working for a crime boss,",
+              "overview": "After being coerced into working for a crime boss, a young getaway driver finds himself taking part in a heist doomed to fail.",
+              "tagline": "All you need is one killer track.",
               "popularity": 228.033,
               "release_date": "2017-06-28T04:00:00.000Z",
               "runtime": 113
@@ -894,9 +796,11 @@
             {
               "id": 177572,
               "imdb_id": 2245084,
+              "title": "Big Hero 6",
               "original_title": "Big Hero 6",
               "original_language": "en",
-              "overview": "The special bond that develops between plus-sized ",
+              "overview": "The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.",
+              "tagline": "From the creators of Wreck-it Ralph and Frozen",
               "popularity": 213.85,
               "release_date": "2014-10-24T04:00:00.000Z",
               "runtime": 102
@@ -904,9 +808,11 @@
             {
               "id": 293660,
               "imdb_id": 1431045,
+              "title": "Deadpool",
               "original_title": "Deadpool",
               "original_language": "en",
-              "overview": "Deadpool tells the origin story of former Special ",
+              "overview": "Deadpool tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.",
+              "tagline": "Witness the beginning of a happy ending",
               "popularity": 187.86,
               "release_date": "2016-02-09T05:00:00.000Z",
               "runtime": 108
@@ -914,9 +820,11 @@
             {
               "id": 283995,
               "imdb_id": 3896198,
+              "title": "Guardians of the Galaxy Vol. 2",
               "original_title": "Guardians of the Galaxy Vol. 2",
               "original_language": "en",
-              "overview": "The Guardians must fight to keep their newfound fa",
+              "overview": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
+              "tagline": "Obviously.",
               "popularity": 185.331,
               "release_date": "2017-04-19T04:00:00.000Z",
               "runtime": 137
@@ -924,9 +832,11 @@
             {
               "id": 19995,
               "imdb_id": 499549,
+              "title": "Avatar",
               "original_title": "Avatar",
               "original_language": "en",
-              "overview": "In the 22nd century, a paraplegic Marine is dispat",
+              "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+              "tagline": "Enter the World of Pandora.",
               "popularity": 185.071,
               "release_date": "2009-12-10T05:00:00.000Z",
               "runtime": 162
@@ -934,9 +844,11 @@
             {
               "id": 245891,
               "imdb_id": 2911666,
+              "title": "John Wick",
               "original_title": "John Wick",
               "original_language": "en",
-              "overview": "Ex-lunatic John Wick comes off his meds to track d",
+              "overview": "Ex-lunatic John Wick comes off his meds to track down the bounders that killed his dog and made off with his self-respect",
+              "tagline": "Don't set him off.",
               "popularity": 183.87,
               "release_date": "2014-10-22T04:00:00.000Z",
               "runtime": 101
@@ -944,9 +856,11 @@
             {
               "id": 210577,
               "imdb_id": 2267998,
+              "title": "Gone Girl",
               "original_title": "Gone Girl",
               "original_language": "en",
-              "overview": "With his wife's disappearance having become the fo",
+              "overview": "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
+              "tagline": "You don't know what you've got 'til it's...",
               "popularity": 154.801,
               "release_date": "2014-10-01T04:00:00.000Z",
               "runtime": 145
@@ -956,112 +870,251 @@
             {
               "id": 297762,
               "imdb_id": 451279,
+              "title": "Wonder Woman",
               "original_title": "Wonder Woman",
               "original_language": "en",
-              "overview": "An Amazon princess comes to the world of Man to be",
+              "overview": "An Amazon princess comes to the world of Man to become the greatest of the female superheroes.",
+              "tagline": "Power. Grace. Wisdom. Wonder.",
               "popularity": 294.337,
               "release_date": "2017-05-30T04:00:00.000Z",
               "runtime": 141,
+              "id": 297762,
+              "original_title": "Wonder Woman",
               "genre": "Action"
             },
             {
               "id": 339403,
               "imdb_id": 3890160,
+              "title": "Baby Driver",
               "original_title": "Baby Driver",
               "original_language": "en",
-              "overview": "After being coerced into working for a crime boss,",
+              "overview": "After being coerced into working for a crime boss, a young getaway driver finds himself taking part in a heist doomed to fail.",
+              "tagline": "All you need is one killer track.",
               "popularity": 228.033,
               "release_date": "2017-06-28T04:00:00.000Z",
               "runtime": 113,
+              "id": 339403,
+              "original_title": "Baby Driver",
               "genre": "Action"
             },
             {
               "id": 177572,
               "imdb_id": 2245084,
+              "title": "Big Hero 6",
               "original_title": "Big Hero 6",
               "original_language": "en",
-              "overview": "The special bond that develops between plus-sized ",
+              "overview": "The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.",
+              "tagline": "From the creators of Wreck-it Ralph and Frozen",
               "popularity": 213.85,
               "release_date": "2014-10-24T04:00:00.000Z",
               "runtime": 102,
+              "id": 177572,
+              "original_title": "Big Hero 6",
               "genre": "Action"
             },
             {
               "id": 293660,
               "imdb_id": 1431045,
+              "title": "Deadpool",
               "original_title": "Deadpool",
               "original_language": "en",
-              "overview": "Deadpool tells the origin story of former Special ",
+              "overview": "Deadpool tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.",
+              "tagline": "Witness the beginning of a happy ending",
               "popularity": 187.86,
               "release_date": "2016-02-09T05:00:00.000Z",
               "runtime": 108,
+              "id": 293660,
+              "original_title": "Deadpool",
               "genre": "Action"
             },
             {
               "id": 283995,
               "imdb_id": 3896198,
+              "title":"Guardians of the Galaxy Vol. 2",
               "original_title": "Guardians of the Galaxy Vol. 2",
               "original_language": "en",
-              "overview": "The Guardians must fight to keep their newfound fa",
+              "overview": "The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage.",
+              "tagline": "Obviously.",
               "popularity": 185.331,
               "release_date": "2017-04-19T04:00:00.000Z",
               "runtime": 137,
+              "id": 283995,
+              "original_title": "Guardians of the Galaxy Vol. 2",
               "genre": "Action"
             },
             {
               "id": 19995,
               "imdb_id": 499549,
+              "title": "Avatar",
               "original_title": "Avatar",
               "original_language": "en",
-              "overview": "In the 22nd century, a paraplegic Marine is dispat",
+              "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+              "tagline": "Enter the World of Pandora.",
               "popularity": 185.071,
               "release_date": "2009-12-10T05:00:00.000Z",
               "runtime": 162,
+              "id": 19995,
+              "original_title": "Avatar",
               "genre": "Action"
             },
             {
               "id": 245891,
               "imdb_id": 2911666,
+              "title": "John Wick",
               "original_title": "John Wick",
               "original_language": "en",
-              "overview": "Ex-lunatic John Wick comes off his meds to track d",
+              "overview": "Ex-lunatic John Wick comes off his meds to track down the bounders that killed his dog and made off with his self-respect",
+              "tagline": "Don't set him off.",
               "popularity": 183.87,
               "release_date": "2014-10-22T04:00:00.000Z",
               "runtime": 101,
+              "id": 245891,
+              "original_title": "John Wick",
               "genre": "Action"
             },
             {
               "id": 271110,
               "imdb_id": 3498820,
+              "title": "Captain America: Civil War",
               "original_title": "Captain America: Civil War",
               "original_language": "en",
-              "overview": "Following the events of Age of Ultron, the collect",
+              "overview": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.",
+              "tagline": "Divided We Fall",
               "popularity": 145.882,
               "release_date": "2016-04-27T04:00:00.000Z",
               "runtime": 147,
+              "id": 271110,
+              "original_title": "Captain America: Civil War",
               "genre": "Action"
             },
             {
               "id": 166426,
               "imdb_id": 1790809,
+              "title": "Pirates of the Caribbean: Dead Men Tell No Tales",
               "original_title": "Pirates of the Caribbean: Dead Men Tell No Tales",
               "original_language": "en",
-              "overview": "Thrust into an all-new paycheck, a down-on-his-luc",
+              "overview": "Thrust into an all-new paycheck, a down-on-his-luck Capt. Jack Sparrow feels the winds of ill-fortune blowing even more strongly when deadly ghost sailors led by his old nemesis, the evil Capt. Salazar, escape from the Devil's Triangle. Jack's only hope of a payout lies in seeking out the legendary Trident of Numbers, but to find it, he must forge an uneasy alliance with a reasonably intelligent and pretty astronomer and a irritating young man in the British navy.",
+              "tagline": null,
               "popularity": 133.828,
               "release_date": "2017-05-23T04:00:00.000Z",
               "runtime": 129,
+              "id": 166426,
+              "original_title": "Pirates of the Caribbean: Dead Men Tell No Tales",
               "genre": "Action"
             },
             {
               "id": 155,
               "imdb_id": 468569,
+              "title": "The Dark Knight",
               "original_title": "The Dark Knight",
               "original_language": "en",
-              "overview": "Batman raises the stakes in his war on crime. With",
+              "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+              "tagline": "Why So Serious?",
               "popularity": 123.167,
               "release_date": "2008-07-16T04:00:00.000Z",
               "runtime": 152,
+              "id": 155,
+              "original_title": "The Dark Knight",
               "genre": "Action"
             }
-          ]
+          ],
+          "get_movies_collection": [
+            {
+              "id": 11,
+              "original_title": "Star Wars",
+              "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+              "popularity": 42.1497,
+              "runtime": 121,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 1891,
+              "original_title": "The Empire Strikes Back",
+              "overview": "The epic saga continues as Luke Skywalker, in hopes of defeating the evil Galactic Empire, learns the ways of the Jedi from aging master Yoda. But Darth Vader is more determined than ever to capture Luke. Meanwhile, rebel leader Princess Leia, cocky Han Solo, Chewbacca, and droids C-3PO and R2-D2 are thrown into various stages of capture, betrayal and despair.",
+              "popularity": 19.471,
+              "runtime": 124,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 1892,
+              "original_title": "Return of the Jedi",
+              "overview": "As Rebel leaders map their strategy for an all-out attack on the Emperor's newer, bigger Death Star. Han Solo remains frozen in the cavernous desert fortress of Jabba the Hutt, the most loathsome outlaw in the universe, who is also keeping Princess Leia as a slave girl. Now a master of the Force, Luke Skywalker rescues his friends, but he cannot become a true Jedi Knight until he wages his own crucial battle against Darth Vader, who has sworn to win Luke over to the dark side of the Force.",
+              "popularity": 14.5861,
+              "runtime": 135,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 1893,
+              "original_title": "Star Wars: Episode I - The Phantom Menace",
+              "overview": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
+              "popularity": 15.6491,
+              "runtime": 136,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 1894,
+              "original_title": "Star Wars: Episode II - Attack of the Clones",
+              "overview": "Ten years after the invasion of Naboo, the galaxy is on the brink of civil war. Under the leadership of a renegade Jedi named Count Dooku, thousands of solar systems threaten to break away from the Galactic Republic. When an assassination attempt is made on Senator Padmé Amidala, the former Queen of Naboo, twenty-year-old Jedi apprentice Anakin Skywalker is assigned to protect her. In the course of his mission, Anakin discovers his love for Padmé as well as his own darker side. Soon, Anakin, Pad",
+              "popularity": 14.0725,
+              "runtime": 142,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 1895,
+              "original_title": "Star Wars: Episode III - Revenge of the Sith",
+              "overview": "Years after the onset of the Clone Wars, the noble Jedi Knights lead a massive clone army into a galaxy-wide battle against the Separatists. When the sinister Sith unveil a thousand-year-old plot to rule the galaxy, the Republic crumbles and from its ashes rises the evil Galactic Empire. Jedi hero Anakin Skywalker is seduced by the dark side of the Force to become the Emperor's new apprentice – Darth Vader. The Jedi are decimated, as Obi-Wan Kenobi and Jedi Master Yoda are forced into hiding. Th",
+              "popularity": 13.1654,
+              "runtime": 140,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 140607,
+              "original_title": "Star Wars: The Force Awakens",
+              "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+              "popularity": 31.626,
+              "runtime": 136,
+              "collection": "Star Wars Collection"
+            },
+            {
+              "id": 330459,
+              "original_title": "Rogue One: A Star Wars Story",
+              "overview": "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.",
+              "popularity": 36.5676,
+              "runtime": 133,
+              "collection": "Star Wars Collection"
+            }
+          ],
+          "get_collection": 
+            {
+              "collection": "Star Wars Collection",
+              "movies": "Return of the Jedi,Rogue One: A Star Wars Story,Star Wars,Star Wars: Episode I - The Phantom Menace,Star Wars: Episode II - Attack of the Clones,Star Wars: Episode III - Revenge of the Sith,Star Wars: The Force Awakens,The Empire Strikes Back",
+              "genres": "Action,Adventure,Fantasy,Science Fiction",
+              "keywords": "3d,against the odds,alien,alien language,alien race,android,apprentice,army,asteroid,blind man,brother sister relationship,chancel,childbirth,cult figure,death star,dream sequence,droid,emperor,empire,ewoks,expectant mother,female protagonist,galactic war,galaxy,good becoming evil,good vs evil,gunfight,hatred,hermit,imax,investigation,jabba the hutt,jedi,jedi master,jedi training,kendo,laser gun,lightsaber,matter of life and death,mechanical hand,planet,prequel,prophecy,queen,rebel,rebellion,rescue mission,robot,senate,showdown,smuggler,snow storm,space,space battle,space colony,space opera,space travel,space western,spaceport,spaceship,spin off,stormtrooper,suicide mission,taskmaster,taxes,teenage rebellion,the force,totalitarianism,violence,vision,war,wedding,wookie,yoda"
+            },
+            "drama":
+                {
+                  "title": "Ariel",
+                  "language": "fi",
+                  "tagline": null,
+                  "popularity": 3.86049,
+                  "release_date": "1988-10-21T04:00:00.000Z",
+                  "runtime": 69,
+                  "id": 2
+                },
+                "search_collection_genre": [
+                    {
+                      "collection": "20th Century Boys Collection",
+                      "movies": "20世紀少年 ぼくらの旗,２０世紀少年< 第1章> 終わりの始まり,20世紀少年< 第２章>最後の希望",
+                      "genres": "Adventure",
+                      "keywords": "anime,bangkok,based on manga,cult,london england,osaka japan,tokyo japan"
+                    }
+                  ],
+                  "search_collection_keywords": [
+                    {
+                      "collection": "20th Century Boys Collection",
+                      "movies": "20世紀少年 ぼくらの旗,２０世紀少年< 第1章> 終わりの始まり,20世紀少年< 第２章>最後の希望",
+                      "genres": "Adventure,Mystery,Science Fiction",
+                      "keywords": "anime"
+                    }
+                  ]
 }
